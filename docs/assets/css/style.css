@@ -738,6 +738,11 @@ section {
   font-size: 14px;
 }
 
+.services .align-center {
+  display: flex;
+  justify-content: center;
+}
+
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
