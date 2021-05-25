@@ -38,9 +38,9 @@ class Login extends React.Component {
     super(props);
     //static int a ++;
     this.state = {
-        email: "" ,
-        passwd:"",
-        remember:"False",
+        email: "admin@admin.com" ,
+        passwd:"admin",
+        remember:"true",
         error: false};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
