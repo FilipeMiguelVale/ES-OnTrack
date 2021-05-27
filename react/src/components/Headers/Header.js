@@ -18,8 +18,8 @@
 import React from "react";
 
 // reactstrap components
-import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
-import Timer from "./Timer";
+import { Card, Container, Row, Col } from "reactstrap";
+
 import Example from "./Example"
 
 

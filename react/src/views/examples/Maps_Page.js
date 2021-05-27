@@ -23,7 +23,7 @@ import {Card, Container, Row} from "reactstrap";
 import Header from "../../components/Headers/Header.js";
 import Maps from "./Maps_Component.js";
 
-const call_time = 2000;
+const call_time = 20;
 
 
 const Maps_Page = () => {
@@ -34,7 +34,7 @@ const Maps_Page = () => {
     const interval = setInterval(
       () => {
         getAllLocations().then((value) => {
-          setMarkers(value)
+            setMarkers(value)
         }
         );
       }, call_time);
@@ -45,19 +45,27 @@ const Maps_Page = () => {
 
   const getAllLocations = async () => {
     let response = await fetch(
-      `/list_accidents`);
+      `/api/list_accidents`);
     let result = await response.json();
     let all_locations = [];
-    for (let i=0; i < result.length; i++){
-      all_locations.push(
-        {
-          lat: result[i]["location"]["lat"],
-          lng: result[i]["location"]["lng"],
-          id: result[i]["id"],
-          status: result[i]["status"]
+    //console.log(result)
+    for (var key in result){
+        all_locations.push(
+    //     // {
+    //     //   lat: result[i]["location"]["lat"],
+    //     //   lng: result[i]["location"]["lng"],
+    //     //   id: result[i]["id"],
+    //     //   status: result[i]["status"]
+        // }
+      {
+          lat: parseFloat(result[key]["lat"]),
+          lng: parseFloat(result[key]["lng"]),
+          id: key,
+          status: 0
         }
       )
     }
+    console.log(all_locations.length)
     return all_locations;
   }
 
@@ -71,9 +79,9 @@ const Maps_Page = () => {
               <Card className="shadow border-0">
                 <Maps
                   markers={markers}
-                  zoom = {10}
+                  zoom = {13}
                   mapElement={
-                    <div style={{ height: `100%`, borderRadius: "inherit" }} />
+                    <div style={{ height: `150%`, borderRadius: "inherit" }} />
                   }
                 />
               </Card>

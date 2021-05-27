@@ -10,7 +10,7 @@ const MapWrapper = withScriptjs(
             defaultCenter= {props.defaultCenter}
             defaultZoom={props.zoom}
             defaultOptions={{
-              scrollwheel: false,
+              // scrollwheel: false,
             }}
         >
         {props.markers.map((props,index) =>{
@@ -19,7 +19,8 @@ const MapWrapper = withScriptjs(
           <Marker position={{lat: props.lat, lng: props.lng}}
            key={index}
            id={index}
-           options={{icon:`/accident_icon/${props.status}`}}
+           // options={{icon:`/accident_icon/${props.status}`}}
+              options={{icon:"/assets/img/icons/bus.png"}}
            onClick={(() => 
             { if(props.id)
                 {window.location.href =`/#admin/accident_details/${props.id}`}
@@ -35,13 +36,13 @@ const MapWrapper = withScriptjs(
             center= {props.center}
             defaultZoom={props.zoom}
             defaultOptions={{
-              scrollwheel: false,
+              // scrollwheel: false,
             }}
         >
         {props.markers.map(props =>
           <Marker 
           position={{lat: props.lat, lng: props.lng}}
-          options={{icon:`/accident_icon/${props.status}`}}
+            options={{icon:"/assets/img/icons/bus.png"}}
            onClick={(() => 
             { if(props.id)
                 {window.location.href =`/#admin/accident_details/${props.id}`}
@@ -58,8 +59,8 @@ class Maps extends React.Component {
     super(props);
 
     this.state = {
-      lat: 0,
-      lng: 0
+      lat: 41.148679887696275,
+      lng: -8.637576907768661
     }
   }
 
@@ -67,8 +68,8 @@ class Maps extends React.Component {
     Promise.all([this.get_my_location()]).then((value) => {
       this.setState(
         {
-          lat: value[0].coords.latitude,
-          lng: value[0].coords.longitude
+          lat: 41.148679887696275, //value[0].coords.latitude,
+          lng: -8.637576907768661//value[0].coords.longitude
         })})
   }
 
@@ -86,26 +87,26 @@ class Maps extends React.Component {
 
   render() 
   {
-    if (this.props.center)
-      return(
-        <MapWrapper_details
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLG_2KgktdQJXLaeyQZHJzmvcSjNwoPM"
-        loadingElement={<div style={{ height: `100%` }} />}
-        center = {this.props.center}
-        zoom = {this.props.zoom}
-        markers = {this.props.markers}
-        containerElement={
-            <div
-                className="map-canvas"
-                id="map-canvas"
-            />
-        }
-        mapElement={this.props.mapElement}
-    />
-    )
+    // if (this.props.center)
+    //   return(
+    //     <MapWrapper_details
+    //     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4"
+    //     loadingElement={<div style={{ height: `100%` }} />}
+    //     center = {this.props.center}
+    //     zoom = {this.props.zoom}
+    //     markers = {this.props.markers}
+    //     containerElement={
+    //         <div
+    //             className="map-canvas"
+    //             id="map-canvas"
+    //         />
+    //     }
+    //     mapElement={this.props.mapElement}
+    // />
+    // )
     return (
     <MapWrapper
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLG_2KgktdQJXLaeyQZHJzmvcSjNwoPM"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4"
         loadingElement={<div style={{ height: `100%` }} />}
         defaultCenter = {this.state}
         zoom = {this.props.zoom}

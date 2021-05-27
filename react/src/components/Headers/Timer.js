@@ -18,7 +18,7 @@
 import React from "react";
 
 // reactstrap components
-import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
+import {  CardBody, CardTitle, Row, Col } from "reactstrap";
 
 
 class Timer extends React.Component {
@@ -35,10 +35,10 @@ class Timer extends React.Component {
   tick() {
 
    var new_name_view=""
-    if (this.state.seconds % 3 == 0){
+    if (this.state.seconds % 3 === 0){
       new_name_view="Today\t\t"
     }else{
-      if(this.state.seconds % 2 == 0){
+      if(this.state.seconds % 2 === 0){
         new_name_view="Week\t\t"
       }else{
         new_name_view="Month\t\t"
