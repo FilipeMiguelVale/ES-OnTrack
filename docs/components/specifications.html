@@ -73,7 +73,202 @@
             </div>
           </div>
         </div>
-        <p>TO DO</p>
+      </div>
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Perspetiva do Produto</b></h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-left">
+          Pretende-se desenvolver uma aplicação que venha colmatar a necessidade de várias pessoas, não só utilizadores dos transportes públicos mas também os 
+          gestores/administradores dos mesmos, que desejam obter diversas informações sobre os autocarros da cidade do Porto.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-left">
+          A aplicação OnTrack, ainda em desenvolvimento, permitirá, a qualquer utilizador, obter informações relativas à localização dos vários autocarros, 
+          bem como um conjunto de aspetos técnicos relativos a um determinado autocarro, como por exemplo a sua velocidade média, número de km’s percorridos, 
+          entre outros. Será também possível efetuar a filtragem de autocarros por parte de um utilizador, o que lhe permitirá definir um conjunto de atributos 
+          para escolher mais facilmente o autocarro ideal para satisfazer as suas necessidades de deslocamento dentro da cidade do Porto.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-left">
+          Assim, esta aplicação pretende trazer comodidade a qualquer pessoa que escolha desfrutar das suas funcionalidades.
+        </p>
+      </div>
+    </section>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Funcionalidades do Sistema</b></h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Este sistema tem como objetivo satisfazer as necessidades dos seus utilizadores finais, de forma a complementar sistemas já existentes, como o 
+          Porto.Bus, oferecendo informações em tempo real acerca dos autocarros da cidade do Porto, não só aos utilizadores destes transportes públicos como 
+          também aos gestores dos mesmos.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Após um levantamento de necessidades de diversos possíveis utilizadores e dos cenários de utilização destes, foram definidas as seguintes funcionalidades:
+        </p>
+        </br>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F01</b></td>
+            <td>Visualização em tempo real dos autocarros e das suas trajetórias na cidade do Porto.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F02</b></td>
+            <td>Visualização em tempo real das paragens de autocarros da cidade do Porto.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F03</b></td>
+            <td>Definição de um alarme para um determinado autocarro.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F04</b></td>
+            <td>Verificação dos autocarros dentro de uma determinada área de localização.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F05</b></td>
+            <td>Filtragem de autocarros, em função de um conjunto de atributos a definir pelo utilizador.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F06</b></td>
+            <td>Visualização do histórico de um determinado autocarro.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F07</b></td>
+            <td>Obtenção de dados estatísticos sobre os autocarros.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Interfaces de Software</b></h3>
+        </div>
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);"><b>Backend</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Dataset</b></td>
+            <td>A aplicação depende dos dados recolhidos por sensores nos autocarros do Porto. Contudo, para efeitos de simulação e teste foi usado um dataset 
+              que contém previamente dados retirados desses sensores, como o ID do autocarro, as coordenadas, a velocidade média, entre outros.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Data Storage</b></td>
+            <td>Para o armazenamento de dados, a aplicação OnTrack faz uso de duas bases de dados. Para armazenar as informações de cada conta de utilizador é 
+              usada uma base de dados MySQL. Relativamente ao armazenamento das informações dos autocarros, a aplicação dispõe de uma base de dados InflluxBD 
+              que facilita a recolha e tratamento dos dados.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Web Framework</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Data Stream</b></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);"><b>Frontend</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Web Application</b></td>
+            <td>A interface de utilizador da aplicação OnTrack está construída em React.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Requisitos de Qualidade</b></h3>
+        </div>
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);"><b>Requisitos de Usabilidade</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE01</b></td>
+            <td>O sistema deverá permitir visualizar, de forma imediata, a localização e trajetória dos autocarros.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE02</b></td>
+            <td>O sistema deverá permitir visualizar, de forma imediata, a localização das paragens dos autocarros.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE03</b></td>
+            <td>A filtragem dos autocarros, por parte do utilizador, deverá ser possível em menos de 1 minuto.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE04/b></td>
+            <td>A seleção de uma paragem deve ser possível em menos de 30 segundos.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE05</b></td>
+            <td>A seleção de um autocarro e apresentação dos seus dados, como por exemplo, a sua velocidade, deverá ser possível em menos de 30 segundos.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE06</b></td>
+            <td>A seleção da área dos autocarros deverá ser possível em menos de 1 minuto.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE07</b></td>
+            <td>Para todas as interações do utilizador com a aplicação, deverá ser possível reverter a funcionalidade ou até mesmo cancelar.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE08</b></td>
+            <td>A interface do sistema deverá ser simples, intuitiva e direta.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE09</b></td>
+            <td>O início de sessão deverá ser possível em menos de 30 segundos.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE10</b></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);"><b>Requisitos de Performance</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER01</b></td>
+            <td>A dashboard referente aos dados dos autocarros deverá carregar totalmente em menos de 30 segundos.</td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER02</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER03</b></td>
+            <td>A apresentação dos dados ao utilizador deverá ser realizada em menos de 20 segundos.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);"><b>Requisitos de Disponibilidade</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>AVL01</b></td>
+            <td>Todas as funcionalidades disponibilizadas deverão estar disponíveis pelo menos 90% do tempo.
+            </td>
+          </tr>
+        </table>
+        </br></br>
       </div>
     </section>
   </main>
