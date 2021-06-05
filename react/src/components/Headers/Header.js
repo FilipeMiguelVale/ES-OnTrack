@@ -44,9 +44,9 @@ class Header extends React.Component {
                 </Col>
                 <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
-                    <Example title={"Accidents"}
+                    <Example title={"Buses"}
                              icon_name={"icon icon-shape bg-red text-white rounded-circle shadow"}
-                             icon={"fas fa-car-crash"}
+                             icon={"fas fa-bus"}
                     />
                   </Card>
                 </Col>
@@ -60,9 +60,9 @@ class Header extends React.Component {
                 </Col>
                 <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
-                    <Example title={"Medical care"}
+                    <Example title={"Notifications"}
                              icon_name={"icon icon-shape bg-blue text-white rounded-circle shadow"}
-                             icon={"fas fa-ambulance"}
+                             icon={"fas fa-bell-slash"}
                     />
                   </Card>
                 </Col>

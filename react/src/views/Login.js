@@ -21,7 +21,7 @@ import React from "react";
 import {
   Button,
   Card,
-  CardHeader,
+  //CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -69,7 +69,7 @@ class Login extends React.Component {
     }).then(res => res.json())
       .then(
         (result) => {
-          if(result['response']=="Done")
+          if(result['response']==="Done")
             this.props.history.push("/admin");
           else{
             this.setState({ error: result['error'] });

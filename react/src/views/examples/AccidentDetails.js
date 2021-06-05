@@ -16,7 +16,7 @@
 
 */
 import React from "react";
-import ImageGallery from './ImageGallery';
+//import ImageGallery from './ImageGallery';
 import "../../assets/css/custom.css"
 
 // reactstrap components
@@ -41,7 +41,7 @@ import Maps from "./Maps_Component.js";
 import {Redirect} from "react-router-dom";
 
 const PREFIX_URL = 'https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/';
-const MEDIA_URL='/media/'
+//const MEDIA_URL='/media/'
 
 function fix_date(st) {
   let date = st.split('T');

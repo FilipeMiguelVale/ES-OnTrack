@@ -24,7 +24,7 @@ import {
     Badge,
     Card,
     CardHeader,
-    Media,
+    //Media,
     Table,
     Container,
     Row,
@@ -32,7 +32,7 @@ import {
 } from "reactstrap";
 // core components
 import Header from "../../components/Headers/Header.js";
-import Maps from "./Maps_Component.js"
+//import Maps from "./Maps_Component.js"
 
 
 function fix_date(st) {
@@ -247,7 +247,7 @@ class Accidents extends React.Component {
               <i className="fas fa-ellipsis-h"/>
             </Button>
             {/* delete button */}
-           {this.state.role==0 && (
+           {this.state.role===0 && (
            <Button
                 className="icon icon-shape border-default bg-transparent text-danger "
                 type="button"
@@ -268,7 +268,7 @@ class Accidents extends React.Component {
         Buttons.push(<li className="page-item"><a className="page-link" onClick={(e)=>this.handleClick(e,this.state.curent_page-1)}><i
                        className="fas fa-angle-left"></i></a></li>)
       for (let i = 1; i < Math.ceil(this.state.num_accidents/this.state.num_to_show)+1; i++) {
-        if(i==this.state.curent_page){
+        if(i===this.state.curent_page){
           Buttons.push(<li className="page-item active"><a className="page-link" onClick={(e)=>this.handleClick(e,`${i}`)}>{i}</a></li>)
         }
         else{

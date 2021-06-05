@@ -24,15 +24,15 @@ import Chart from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
-  Button,
+  //Button,
   Card,
   CardHeader,
   CardBody,
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
+  //Progress,
+  //Table,
   Container,
   Row,
   Col
@@ -82,7 +82,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-light ls-1 mb-1">
                         Overview
                       </h6>
-                      <h2 className="text-white mb-0">Accidents</h2>
+                      <h2 className="text-white mb-0">Nº Bus</h2>
                     </div>
                     <div className="col">
                       <Nav className="justify-content-end" pills>
@@ -135,7 +135,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-muted ls-1 mb-1">
                         Performance
                       </h6>
-                      <h2 className="mb-0">Accidents by Discticts</h2>
+                      <h2 className="mb-0">Bus by lines</h2>
                     </div>
                   </Row>
                 </CardHeader>
