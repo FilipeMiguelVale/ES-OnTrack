@@ -41,7 +41,7 @@ public class RestControler {
 //        if (DBControler.canLogin(login.getEmail(), login.getPasswd())) {
 //            result.setResponse("DONE");
 //        }
-        result.setResponse("DONE");
+        result.setResponse("Done");
 
         return ResponseEntity.ok().body(result);
     }
