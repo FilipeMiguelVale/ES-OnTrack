@@ -8,10 +8,10 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>es_ontrack.backend</groupId>
-	<artifactId>src</artifactId>
+	<groupId>pt.ua.deti.es.p23</groupId>
+	<artifactId>OnTrack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>src</name>
+	<name>OnTrack</name>
 	<description>ES_OnTrack backend</description>
 	<properties>
 		<java.version>11</java.version>
@@ -81,6 +81,19 @@
 			<scope>test</scope>
 		</dependency> -->
 	</dependencies>
+	
+	<distributionManagement>
+	    <repository>
+            <id>central</id>
+            <name>es2021</name>
+            <url>http://192.168.160.49:8082/artifactory/maven_es2021</url>
+	    </repository>
+	    <snapshotRepository>
+            <id>snapshots</id>
+            <name>es2021</name>
+            <url>http://192.168.160.49:8082/artifactory/maven_es2021</url>
+        </snapshotRepository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
