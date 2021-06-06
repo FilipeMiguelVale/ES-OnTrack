@@ -38,14 +38,15 @@ public class RestControler {
         Response result = new Response();
         result.setResponse("Invalid username or password");
 
-        if (DBControler.canLogin(login.getEmail(), login.getPasswd())) {
-            result.setResponse("DONE");
-        }
+//        if (DBControler.canLogin(login.getEmail(), login.getPasswd())) {
+//            result.setResponse("DONE");
+//        }
+        result.setResponse("DONE");
 
         return ResponseEntity.ok().body(result);
     }
 
-    @PostMapping("/add_user")
+    @PostMapping("/register_user")
     public ResponseEntity<String> add_user(@RequestBody RegisterForm registration) {
         String email = registration.getEmail();
         String passwd = registration.getPasswd();
