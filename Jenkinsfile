@@ -34,7 +34,7 @@ pipeline {
 		stage ('Testing') {
 		    steps{
 			    dir("backend"){
-				    sh 'mvn test'
+				    sh 'mvn -Dtest=TestCircle ReactTest'
 			    }
 		    }
 		}
