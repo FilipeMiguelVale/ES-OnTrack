@@ -22,12 +22,14 @@ public class BusProducer extends Thread {
     public final String BOOTSTRAP_SERVERS;
     public final String topic;
     private Producer<String,Bus> prod;
+    private DataSource ds;
     
-    public BusProducer(String serv,String top)
+    public BusProducer(String serv,String top,String fname)
     {
     this.BOOTSTRAP_SERVERS=serv;
     this.topic=top;
     this.prod = BusProducer.createProducer(serv);
+    this.ds = new DataSource(fname);
     }
     
     private static Producer<String,Bus> createProducer(String BS)
@@ -39,6 +41,9 @@ public class BusProducer extends Thread {
     prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,BusSerializer.class.getName());
     return new KafkaProducer<>(prop);
     }
+    
+    //TODO: Implement Send method
+    
     
     public class DataSource{
         private BufferedReader bf;
@@ -78,6 +83,8 @@ public class BusProducer extends Thread {
             }
             return new Bus();
         }
+        
+        
         
     }
     
