@@ -11,11 +11,11 @@ class ReactTest {
 
 
 	@Test
-	void DummyFileExists() {
+	void JsonPackageFileExists() {
 
-		File tmp = new File("../dummytest");
+		File tmp = new File("../react/package.json");
 		assert (tmp.exists());
-		if(tmp.exists()) System.out.println("Dummytest exists!");
+		if(tmp.exists()) System.out.println("package.json exists!");
 	}
 
 
