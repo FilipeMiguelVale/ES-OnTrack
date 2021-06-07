@@ -26,15 +26,15 @@ pipeline {
 		stage ('Build') {
 			steps {
 			    dir("backend"){
-				    sh 'mvn clean install'
+				    sh 'mvn clean install -DskipTests'
 			    }
 			}
 		}
 		
-		stage ('Testing') {
+		stage ('Testing Backend') {
 		    steps{
 			    dir("backend"){
-				    sh 'mvn test -Dtest=ReacTest'
+				    sh 'mvn test -Dtest=ArcApplicationTests'
 			    }
 		    }
 		}
@@ -121,5 +121,13 @@ pipeline {
                   }
             }
         }
+
+        stage ('Testing React') {
+		    steps{
+			    dir("backend"){
+				    sh 'mvn test -Dtest=ReactTest'
+			    }
+		    }
+		}
 	}
 } 
