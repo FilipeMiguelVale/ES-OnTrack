@@ -23,7 +23,7 @@ import {Card, Container, Row} from "reactstrap";
 import Header from "../../components/Headers/Header.js";
 import Maps from "./Maps_Component.js";
 
-const call_time = 20;
+const call_time = 1000;
 
 
 const Maps_Page = () => {
@@ -45,8 +45,9 @@ const Maps_Page = () => {
 
   const getAllLocations = async () => {
     let response = await fetch(
-      `/api/list_accidents`);
+      `/test/data`);
     let result = await response.json();
+
     let all_locations = [];
     //console.log(result)
     for (var key in result){
@@ -59,7 +60,7 @@ const Maps_Page = () => {
         // }
       {
           lat: parseFloat(result[key]["lat"]),
-          lng: parseFloat(result[key]["lng"]),
+          lng: parseFloat(result[key]["lon"]),
           id: key,
           status: 0
         }
