@@ -45,7 +45,6 @@ pipeline {
 			    }
 		    }
 		}
-	}
 		
 		stage ('Deploying Artifact') {
             steps{
