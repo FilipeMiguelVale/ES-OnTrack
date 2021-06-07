@@ -20,12 +20,6 @@ class SrcApplicationTests {
 		if(tmp.exists()) System.out.println("DockerFile exists!");
 	}
 
-    @Test
-	void DummyFileExists() {
 
-		File tmp = new File("../dummytest");
-		assert (tmp.exists());
-		if(tmp.exists()) System.out.println("Dummytest exists!");
-	}
 
 }
