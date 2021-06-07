@@ -42,7 +42,7 @@ pipeline {
 		stage ('Deploying Artifact') {
             steps{
                 dir("backend"){
-				    sh 'mvn deploy -f pom.xml -s settings.xml' 
+				    sh 'mvn deploy -DskipTests -f pom.xml -s settings.xml' 
 			    }
             }
         }
