@@ -123,8 +123,10 @@ pipeline {
         }
 
         stage ("Wait before React Testing") {
-            echo 'Waiting 1 minute before react testing'
-            sleep 60 // seconds
+            steps{
+                echo 'Waiting 1 minute before react testing'
+                sleep 60 // seconds
+            }
         }
 
         stage ('Testing React') {
