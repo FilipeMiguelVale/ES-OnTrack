@@ -78,7 +78,29 @@ pipeline {
                 }
             }
         }
-        
+
+            stage('Deploy React') { 
+            steps {
+                 withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    
+                    script {
+                      remote.user = USERNAME
+                      remote.password = PASSWORD
+                      remote.allowAnyHosts = true
+                        
+                    }
+                    
+                    sshCommand remote: remote, command: "docker stop esp23-react"
+                    sshCommand remote: remote, command: "docker rm esp23-react"
+                    sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker create -p 23000:3000 --name esp23-react 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker start esp23-react"
+                    
+                  }
+            }
+        }
+
         stage('Deploy Backend') { 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -100,27 +122,6 @@ pipeline {
             }
         }
         
-        stage('Deploy React') { 
-            steps {
-                 withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    
-                    script {
-                      remote.user = USERNAME
-                      remote.password = PASSWORD
-                      remote.allowAnyHosts = true
-                        
-                    }
-                    
-                    sshCommand remote: remote, command: "docker stop esp23-react"
-                    sshCommand remote: remote, command: "docker rm esp23-react"
-                    sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/react"
-                    sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/react"
-                    sshCommand remote: remote, command: "docker create -p 23000:3000 --name esp23-react 192.168.160.48:5000/esp23/react"
-                    sshCommand remote: remote, command: "docker start esp23-react"
-                    
-                  }
-            }
-        }
 
         stage ("Wait before React Testing") {
             steps{
