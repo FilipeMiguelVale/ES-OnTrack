@@ -34,7 +34,7 @@ pipeline {
 		stage ('Testing Backend') {
 		    steps{
 			    dir("backend"){
-				    sh 'mvn test -Dtest=ArcApplicationTests'
+				    sh 'mvn test -Dtest=SrcApplicationTests'
 			    }
 		    }
 		}
