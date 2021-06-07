@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
 import java.util.Date;
+import com.EsOntrack.busproducer.BusSerializer;
 /**
  *
  * @author adven
@@ -35,7 +36,7 @@ public class BusProducer extends Thread {
     prop.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,BS);
     prop.put(ProducerConfig.CLIENT_ID_CONFIG, "Kafka Example Producer");
     prop.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
-    prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,null);
+    prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,BusSerializer.class.getName());
     return new KafkaProducer<>(prop);
     }
     
