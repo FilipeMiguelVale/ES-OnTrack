@@ -38,6 +38,14 @@ pipeline {
 			    }
 		    }
 		}
+		stage ('Testing React') {
+		    steps{
+			    dir("backend"){
+				    sh 'mvn test -Dtest=ReactTest'
+			    }
+		    }
+		}
+	}
 		
 		stage ('Deploying Artifact') {
             steps{
@@ -130,10 +138,10 @@ pipeline {
             }
         }
 
-        stage ('Testing React') {
+        stage ('Testing Connections') {
 		    steps{
 			    dir("backend"){
-				    sh 'mvn test -Dtest=ReactTest'
+				    sh 'mvn test -Dtest=DeployConnectionTest'
 			    }
 		    }
 		}
