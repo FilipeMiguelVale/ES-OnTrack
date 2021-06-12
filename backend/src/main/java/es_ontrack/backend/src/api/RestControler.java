@@ -1,6 +1,8 @@
 package es_ontrack.backend.src.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,9 @@ import es_ontrack.backend.src.database.models.User;
 
 @RestController
 public class RestControler {
+
+    @Autowired
+    private DBControler dbControler;
 
     // private static final Logger logger = LogManager.getLogger(); TODO: Set up
     // logger
@@ -38,30 +43,33 @@ public class RestControler {
         Response result = new Response();
         result.setResponse("Invalid username or password");
 
-//        if (DBControler.canLogin(login.getEmail(), login.getPasswd())) {
-//            result.setResponse("DONE");
-//        }
-        result.setResponse("Done");
+        if (dbControler.canLogin(login.getEmail(), login.getPasswd())) {
+            result.setResponse("Done");
+        }
 
         return ResponseEntity.ok().body(result);
     }
 
     @PostMapping("/register_user")
-    public ResponseEntity<String> add_user(@RequestBody RegisterForm registration) {
+    public ResponseEntity<Response> add_user(@RequestBody RegisterForm registration) {
         String email = registration.getEmail();
         String passwd = registration.getPasswd();
-        String role = registration.getRole();
-        int roleType = registration.getRoleType();
-        if (DBControler.add_user_to_database(email, passwd, role, roleType))
-            return ResponseEntity.ok().body("DONE");
+        String username = registration.getUsername();
 
-        return ResponseEntity.ok().body("FAILED TO ADD USER");
+        Response result = new Response();
+        result.setResponse("FAILED TO ADD USER");
+
+        if (dbControler.add_user_to_database(email, passwd, username))
+            result.setResponse("Done");
+
+        return ResponseEntity.ok().body(result);
     }
 
-    @PostMapping("/delete_user")
+    @PostMapping("/delete_user/{email}")
     public ResponseEntity<String> delete_user(@PathVariable String email) {
-        DBControler.delete_user(email);
-        if (!DBControler.get_user(email))
+        if (!dbControler.delete_user(email))
+            return ResponseEntity.ok().body("User Not Found");
+        if (!dbControler.get_user(email))
             return ResponseEntity.ok().body("Delete successful");
 
         return ResponseEntity.ok().body("Delete unsuccessful");
@@ -79,7 +87,7 @@ public class RestControler {
     @GetMapping("/all_users")
     public ResponseEntity<User[]> get_users() {
         // get all users
-        User[] users = DBControler.get_all_users();
+        User[] users = dbControler.get_all_users();
 
         return ResponseEntity.ok().body(users);
     }

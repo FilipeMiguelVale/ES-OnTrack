@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "Users")
 public class User {
 
     // id
@@ -25,10 +25,8 @@ public class User {
     @Column(length = 30)
     private String username;
     // role
-    @Column(nullable = false)
     private String role;
     // role_type
-    @Column(nullable = false)
     private Integer role_type;
 
     public Integer getId() {

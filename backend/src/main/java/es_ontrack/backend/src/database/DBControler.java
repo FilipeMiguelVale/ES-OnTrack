@@ -1,51 +1,61 @@
 package es_ontrack.backend.src.database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import es_ontrack.backend.src.database.models.User;
 
+@Controller
 public class DBControler {
+
     @Autowired
-    private static UserRepository userRepository;
+    private UserRepository userRepository;
 
-    public static boolean canLogin(String email, String passwd) {
+    public boolean canLogin(String email, String passwd) {
 
-        User user = userRepository.findByEmail(email).get(0);
+        List<User> user = userRepository.findByEmail(email);
 
-        if (user == null)
+        if (user.isEmpty())
             return false;
-        if (!user.getPassword().equals(passwd))
+        if (!user.get(0).getPassword().equals(passwd))
             return false;
 
         return true;
     }
 
-    public static boolean add_user_to_database(String email, String passwd, String role, int roleType) {
+    public boolean add_user_to_database(String email, String passwd, String username) {
         User nUser = new User();
         nUser.setEmail(email);
         nUser.setPassword(passwd);
-        nUser.setRole(role);
-        nUser.setRoleType(roleType);
+        nUser.setUsername(username);
+
+        if (userRepository == null)
+            System.out.println("repository not available");
 
         nUser = userRepository.save(nUser);
 
         return userRepository.existsById(nUser.getId());
     }
 
-    public static void delete_user(String email) {
+    public Boolean delete_user(String email) {
 
-        User userToDelete = userRepository.findByEmail(email).get(0);
+        List<User> userToDelete = userRepository.findByEmail(email);
 
-        userRepository.delete(userToDelete);
+        if (userToDelete.isEmpty())
+            return false;
+
+        userRepository.delete(userToDelete.get(0));
+        return true;
     }
 
-    public static boolean get_user(String email) {
+    public boolean get_user(String email) {
         return !userRepository.findByEmail(email).isEmpty();
     }
 
-    public static User[] get_all_users() {
+    public User[] get_all_users() {
         ArrayList<User> result = new ArrayList<>();
         userRepository.findAll().forEach(user -> result.add(user));
         return result.toArray(new User[result.size()]);
