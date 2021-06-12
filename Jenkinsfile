@@ -10,6 +10,13 @@ pipeline {
 	    maven 'maven36'
 	}
 	
+     parameters {
+        choice(
+            name:'pipelinetype',
+            choices: 'Test + Deploy\nDeploy\nTest',
+            description: 'Run the entire pipeline or only some parts of it'
+        )
+    }
     
 	stages {
 	    stage('Cloning repository') {
