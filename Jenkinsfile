@@ -185,6 +185,9 @@ pipeline {
 
         /*
         stage ('Testing Connections') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+            }
 		    steps{
 			    dir("backend"){
 				    sh 'mvn test -Dtest=DeployConnectionTest'
