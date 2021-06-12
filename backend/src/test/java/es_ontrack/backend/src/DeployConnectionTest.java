@@ -36,7 +36,7 @@ public class DeployConnectionTest {
 	@Test
 	public void getReact() throws Exception {
 		System.out.println("Request React");
-		this.mockMvc.perform(get("http://192.168.160.87:23000/")).andDo(print());//.andExpect(status().isOk());
+		this.mockMvc.perform(get("http://192.168.160.87:23000")).andDo(print()).andExpect(status().isOk());
 	}
 	
 

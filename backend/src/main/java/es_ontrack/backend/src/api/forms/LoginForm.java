@@ -2,14 +2,14 @@ package es_ontrack.backend.src.api.forms;
 
 public class LoginForm {
     private String email;
-    private String passwd;
+    private String password;
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    public void setPassword(String passwd) {
+        this.password = passwd;
     }
 
     public String getEmail() {
@@ -17,7 +17,7 @@ public class LoginForm {
     }
 
     public String getPasswd() {
-        return passwd;
+        return password;
     }
 
 }
