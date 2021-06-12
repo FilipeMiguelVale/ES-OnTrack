@@ -18,7 +18,7 @@ pipeline {
                     properties([
                         parameters([
                             choice(
-                                choices: ['ONE', 'TWO'], 
+                                choices: ['DEPLOY AND TEST', 'DEPLOY', 'TEST'], 
                                 name: 'PARAMETER'
                             )
 
@@ -40,7 +40,10 @@ pipeline {
         }
 
 		stage ('Build') {
-			steps {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
+            steps {
 			    dir("backend"){
 				    sh 'mvn clean install -DskipTests'
 			    }
@@ -48,13 +51,19 @@ pipeline {
 		}
 		
 		stage ('Testing Backend') {
-		    steps{
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+            }		    
+            steps{
 			    dir("backend"){
 				    sh 'mvn test -Dtest=SrcApplicationTests'
 			    }
 		    }
 		}
 		stage ('Testing React') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+            }
 		    steps{
 			    dir("backend"){
 				    sh 'mvn test -Dtest=ReactTest'
@@ -63,6 +72,9 @@ pipeline {
 		}
 		
 		stage ('Deploying Artifact') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }            
             steps{
                 dir("backend"){
 				    sh 'mvn deploy -DskipTests -f pom.xml -s settings.xml' 
@@ -71,6 +83,9 @@ pipeline {
         }
         
         stage("Build Backend Image"){
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
             steps{
                 script{
                         docker.withRegistry('http://192.168.160.48:5000') {
@@ -81,6 +96,9 @@ pipeline {
         }
         
         stage("Build React Image"){
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
             steps{
                 script{
                         docker.withRegistry('http://192.168.160.48:5000') {
@@ -91,6 +109,9 @@ pipeline {
         }
         
         stage("Publish images"){
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
             steps{
                 script{
                         docker.withRegistry('http://192.168.160.48:5000') {
@@ -102,7 +123,10 @@ pipeline {
             }
         }
 
-            stage('Deploy React') { 
+            stage('Deploy React') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
@@ -124,7 +148,10 @@ pipeline {
             }
         }
 
-        stage('Deploy Backend') { 
+        stage('Deploy Backend') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
@@ -147,12 +174,16 @@ pipeline {
         
 
         stage ("Wait before React Testing") {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+            }
             steps{
                 echo 'Waiting 1 minute before react testing'
                 sleep 60 // seconds
             }
         }
 
+        /*
         stage ('Testing Connections') {
 		    steps{
 			    dir("backend"){
@@ -160,5 +191,7 @@ pipeline {
 			    }
 		    }
 		}
+
+        */
 	}
 } 
