@@ -9,16 +9,25 @@ pipeline {
 	    jdk 'jdk11'
 	    maven 'maven36'
 	}
-	
-     parameters {
-        choice(
-            name:'pipelinetype',
-            choices: 'Test + Deploy\nDeploy\nTest',
-            description: 'Run the entire pipeline or only some parts of it'
-        )
-    }
-    
+
 	stages {
+
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['ONE', 'TWO'], 
+                                name: 'PARAMETER'
+                            )
+
+                        ])
+                    ])
+                }
+            }
+        }
+
 	    stage('Cloning repository') {
             steps {
                 git(
