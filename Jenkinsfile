@@ -201,6 +201,7 @@ pipeline {
             }
         }
 
+        /*
         stage('Deploy Producer') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
@@ -220,12 +221,14 @@ pipeline {
                     //sshCommand remote: remote, command: "docker rm esp23-bus_producer"
                     //sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/bus_producer"
                     sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/bus_producer"
-                    sshCommand remote: remote, command: "docker create -p 23001:8080 --name esp23-bus_producer 192.168.160.48:5000/esp23/bus_producer"
-                    sshCommand remote: remote, command: "docker start esp23-bus_producer"
+                    sshCommand remote: remote, command: "docker create -p --name esp23-bus_producer 192.168.160.48:5000/esp23/bus_producer"
+                    sshCommand remote: remote, command: "docker start esp23 23001:8080-bus_producer"
                     
                   }
             }
         }
+
+        */
 
 
         
