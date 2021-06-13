@@ -1,5 +1,6 @@
 def remote = [:]
 
+
 pipeline {
 	agent any
 	
@@ -182,7 +183,6 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
-                      def remote = [:]
                       remote.host = "192.168.160.87"
                       remote.name = "playground"                          
                       remote.user = USERNAME
