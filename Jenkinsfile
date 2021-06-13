@@ -209,7 +209,6 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_runtime_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
-                      def remote = [:]
                       remote.host = "192.168.160.18"
                       remote.name = "runtime"  
                       remote.user = USERNAME
