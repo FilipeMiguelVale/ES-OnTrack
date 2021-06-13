@@ -139,7 +139,8 @@ pipeline {
                         docker.withRegistry('http://192.168.160.48:5000') {
                             react.push()
                             backend.push()
-                            bus_producer.push;
+                            bus_producer.push
+                            
                    }
                 sh "docker images"
                 }
