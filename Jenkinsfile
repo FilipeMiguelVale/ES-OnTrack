@@ -43,12 +43,23 @@ pipeline {
             }
         }
 
-		stage ('Build') {
+		stage ('Build Backend') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
             }
             steps {
 			    dir("backend"){
+				    sh 'mvn clean install -DskipTests'
+			    }
+			}
+		}
+
+        stage ('Build Producer') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
+            steps {
+			    dir("bus_producer"){
 				    sh 'mvn clean install -DskipTests'
 			    }
 			}
