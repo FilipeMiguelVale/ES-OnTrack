@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pt.ua.deti.es.p23</groupId>
-	<artifactId>Bus-Procducer</artifactId>
+	<artifactId>Bus_Producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OnTrack</name>
-	<description>ES_OnTrack Bus-Procducer</description>
+	<description>ES_OnTrack Bus-Producer</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
