@@ -1,10 +1,4 @@
-def remote_playground = [:]
-remote_playground.host = "192.168.160.87"
-remote_playground.name = "playground"
 
-def remote_runtime = [:]
-remote_runtime.host = "192.168.160.18"
-remote_runtime.name = "runtime"
 
 pipeline {
 	agent any
@@ -160,18 +154,21 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
-                      remote_playground.user = USERNAME
-                      remote_playground.password = PASSWORD
-                      remote_playground.allowAnyHosts = true
+                      def remote = [:]
+                      remote.host = "192.168.160.87"
+                      remote.name = "playground"         
+                      remote.user = USERNAME
+                      remote.password = PASSWORD
+                      remote.allowAnyHosts = true
                         
                     }
                     
-                    sshCommand remote_playground: remote_playground, command: "docker stop esp23-react"
-                    sshCommand remote_playground: remote_playground, command: "docker rm esp23-react"
-                    sshCommand remote_playground: remote_playground, command: "docker rmi 192.168.160.48:5000/esp23/react"
-                    sshCommand remote_playground: remote_playground, command: "docker pull 192.168.160.48:5000/esp23/react"
-                    sshCommand remote_playground: remote_playground, command: "docker create -p 23000:3000 --name esp23-react 192.168.160.48:5000/esp23/react"
-                    sshCommand remote_playground: remote_playground, command: "docker start esp23-react"
+                    sshCommand remote: remote, command: "docker stop esp23-react"
+                    sshCommand remote: remote, command: "docker rm esp23-react"
+                    sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker create -p 23000:3000 --name esp23-react 192.168.160.48:5000/esp23/react"
+                    sshCommand remote: remote, command: "docker start esp23-react"
                     
                   }
             }
@@ -185,17 +182,20 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
-                      remote_playground.user = USERNAME
-                      remote_playground.password = PASSWORD
-                      remote_playground.allowAnyHosts = true
+                      def remote = [:]
+                      remote.host = "192.168.160.87"
+                      remote.name = "playground"                          
+                      remote.user = USERNAME
+                      remote.password = PASSWORD
+                      remote.allowAnyHosts = true
                         
                     }
-                    sshCommand remote_playground: remote_playground, command: "docker stop esp23-backend"
-                    sshCommand remote_playground: remote_playground, command: "docker rm esp23-backend"
-                    sshCommand remote_playground: remote_playground, command: "docker rmi 192.168.160.48:5000/esp23/backend"
-                    sshCommand remote_playground: remote_playground, command: "docker pull 192.168.160.48:5000/esp23/backend"
-                    sshCommand remote_playground: remote_playground, command: "docker create -p 23001:8080 --name esp23-backend 192.168.160.48:5000/esp23/backend"
-                    sshCommand remote_playground: remote_playground, command: "docker start esp23-backend"
+                    sshCommand remote: remote, command: "docker stop esp23-backend"
+                    sshCommand remote: remote, command: "docker rm esp23-backend"
+                    sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/backend"
+                    sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/backend"
+                    sshCommand remote: remote, command: "docker create -p 23001:8080 --name esp23-backend 192.168.160.48:5000/esp23/backend"
+                    sshCommand remote: remote, command: "docker start esp23-backend"
                     
                   }
             }
@@ -210,6 +210,9 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_runtime_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
+                      def remote = [:]
+                      remote.host = "192.168.160.18"
+                      remote.name = "runtime"  
                       remote.user = USERNAME
                       remote.password = PASSWORD
                       remote.allowAnyHosts = true
