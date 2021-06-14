@@ -212,7 +212,7 @@ pipeline {
             }
         }
 
-        /**
+        
         stage('Deploy Producer') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
@@ -221,7 +221,7 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
-                      remote.host = "192.168.160.18"
+                      remote.host = "192.168.160.87"
                       remote.name = "runtime"  
                       remote.user = USERNAME
                       remote.password = PASSWORD
@@ -239,8 +239,8 @@ pipeline {
             }
         }
 
-        */
-
+        
+        /*
 
         stage ("Wait before React Testing") {
 			when {
@@ -263,6 +263,8 @@ pipeline {
 			    }
 		    }
 		}
+
+        */
 
         
 	}
