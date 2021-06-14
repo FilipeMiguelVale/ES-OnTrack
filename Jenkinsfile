@@ -201,7 +201,7 @@ pipeline {
             }
         }
 
-        /*
+        
         stage('Deploy Producer') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
@@ -228,7 +228,7 @@ pipeline {
             }
         }
 
-        */
+        
 
 
         
