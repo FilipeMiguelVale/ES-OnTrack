@@ -11,7 +11,7 @@
 	<groupId>pt.ua.deti.es.p23</groupId>
 	<artifactId>Bus_Producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>OnTrack</name>
+	<name>Bus_Producer</name>
 	<description>ES_OnTrack Bus-Producer</description>
 	<properties>
 		<java.version>11</java.version>
