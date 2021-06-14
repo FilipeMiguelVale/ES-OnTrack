@@ -207,7 +207,7 @@ pipeline {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
             } 
             steps {
-                 withCredentials([usernamePassword(credentialsId: 'Esp23_runtime_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                 withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
                     script {
                       remote.host = "192.168.160.18"
@@ -221,8 +221,8 @@ pipeline {
                     //sshCommand remote: remote, command: "docker rm esp23-bus_producer"
                     //sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/bus_producer"
                     sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/bus_producer"
-                    sshCommand remote: remote, command: "docker create -p --name esp23-bus_producer 192.168.160.48:5000/esp23/bus_producer"
-                    sshCommand remote: remote, command: "docker start esp23 23001:8080-bus_producer"
+                    sshCommand remote: remote, command: "docker create -p 23002:9001 --name esp23-bus_producer 192.168.160.48:5000/esp23/bus_producer"
+                    sshCommand remote: remote, command: "docker start esp23-bus_producer"
                     
                   }
             }
