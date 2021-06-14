@@ -59,6 +59,17 @@ pipeline {
 			    }
 			}
 		}
+
+        stage ('Build Selenium') {
+			when {
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+            }
+            steps {
+			    dir("selenium_dev"){
+				    sh 'mvn clean install -DskipTests'
+			    }
+			}
+		}
 		
 		stage ('Testing Backend') {
 			when {
@@ -201,7 +212,7 @@ pipeline {
             }
         }
 
-        
+        /**
         stage('Deploy Producer') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
@@ -228,10 +239,8 @@ pipeline {
             }
         }
 
-        
+        *//
 
-
-        
 
         stage ("Wait before React Testing") {
 			when {
@@ -243,18 +252,18 @@ pipeline {
             }
         }
 
-        /*
-        stage ('Testing Connections') {
+        
+        stage ('Selenium Testing') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
             }
 		    steps{
-			    dir("backend"){
-				    sh 'mvn test -Dtest=DeployConnectionTest'
+			    dir("selenium_dev"){
+				    sh 'mvn test'
 			    }
 		    }
 		}
 
-        */
+        
 	}
 } 
