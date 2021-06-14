@@ -239,7 +239,7 @@ pipeline {
             }
         }
 
-        *//
+        */
 
 
         stage ("Wait before React Testing") {
