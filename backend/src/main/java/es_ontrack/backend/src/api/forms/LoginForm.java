@@ -8,7 +8,7 @@ public class LoginForm {
         this.email = email;
     }
 
-    public void setPassword(String passwd) {
+    public void setPasswd(String passwd) {
         this.password = passwd;
     }
 
