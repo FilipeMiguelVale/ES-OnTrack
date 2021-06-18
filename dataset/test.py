@@ -1,4 +1,4 @@
-import csv
+#import csv
 from datetime import date, datetime, time, timedelta
 
 num = 0
@@ -6,16 +6,17 @@ first = None
 number = 0
 myset = set()
 initTime=datetime.strptime("2018-10-08 00:00:00.000", '%Y-%m-%d %H:%M:%S.%f')
-with open('dataset.csv', mode='r') as csv_file:
-    csv_reader = csv.DictReader(csv_file)
-    line_count = 0
-    lines = []
-    for row in csv_reader:
-        if line_count < 10:
-            lines.append(row)
-        else:
-            break
-        line_count+=1
+#with open('dataset.csv', mode='r') as csv_file:
+#    csv_reader = csv.DictReader(csv_file)
+#    line_count = 0
+#    lines = []
+#    for row in csv_reader:
+#        if line_count < 10:
+#            lines.append(row)
+#        else:
+#            break
+#        line_count+=1
+#    print(lines)
 # lines = list(csv.DictReader(open('dataset.csv', 'r')))
 # print(lines[1])
 

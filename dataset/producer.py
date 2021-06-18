@@ -9,7 +9,7 @@ def acked(err, msg):
 	else:
 		print("Message produced: %s" % (str(msg)))
 
-conf = {'bootstrap.servers': "192.168.160.18:9092",
+conf = {'bootstrap.servers': "192.168.160.18:19092",
 		'client.id': socket.gethostname()}
 
 producer = Producer(conf)
@@ -20,7 +20,7 @@ with open('dataset.csv', mode='r') as csv_file:
 	lines = []
 	for row in csv_reader:
 		if line_count < 10000:
-			producer.produce("autobus", key="key", callback=acked,
+			producer.produce("esp23_autobus", key="key", callback=acked,
 							 value=str({"node_id":row["node_id"],"location_id":row["location_id"],"head": row["head"],"lon": row["lon"],
 										"lat": row["lat"], "speed": 0}))
 			producer.flush()
