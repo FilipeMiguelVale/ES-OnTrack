@@ -92,12 +92,15 @@ pipeline {
 		    }
 		}
 		
-		stage ('Deploying Artifact') {
+		stage ('Deploying Artifacts') {
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
             }            
             steps{
                 dir("backend"){
+				    sh 'mvn deploy -DskipTests -f pom.xml -s settings.xml' 
+			    }
+                dir("bus_producer"){
 				    sh 'mvn deploy -DskipTests -f pom.xml -s settings.xml' 
 			    }
             }
