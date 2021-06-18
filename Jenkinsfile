@@ -225,7 +225,7 @@ pipeline {
                     
                     script {
                       remote.host = "192.168.160.87"
-                      remote.name = "runtime"  
+                      remote.name = "playground"  
                       remote.user = USERNAME
                       remote.password = PASSWORD
                       remote.allowAnyHosts = true
