@@ -231,9 +231,9 @@ pipeline {
                       remote.allowAnyHosts = true
                         
                     }
-                    //sshCommand remote: remote, command: "docker stop esp23-bus_producer"
-                    //sshCommand remote: remote, command: "docker rm esp23-bus_producer"
-                    //sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/bus_producer"
+                    sshCommand remote: remote, command: "docker stop esp23-bus_producer"
+                    sshCommand remote: remote, command: "docker rm esp23-bus_producer"
+                    sshCommand remote: remote, command: "docker rmi 192.168.160.48:5000/esp23/bus_producer"
                     sshCommand remote: remote, command: "docker pull 192.168.160.48:5000/esp23/bus_producer"
                     sshCommand remote: remote, command: "docker create -p 23002:9001 --name esp23-bus_producer 192.168.160.48:5000/esp23/bus_producer"
                     sshCommand remote: remote, command: "docker start esp23-bus_producer"
