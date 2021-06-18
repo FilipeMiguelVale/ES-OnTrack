@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OnTrack</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="../assets/img/icons8-bus-50 (1).png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.1.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="../assets/img/icons8-bus-50 (1).png">
+        <h1 class="text-light"><a href="index.html"><i>OnTrack</i></a></h1>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i>
+              <span>Início</span></a></li>
+          <li><a href="../index.html#services" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
+              <span>Documentação</span></a></li>
+          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+              <span>Milestones</span></a></li>
+          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Main Section ======= -->
+  <main id="main">
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <div class="row">
+            <div class="col-md-1 icon-box">
+              <button class="icon">
+                <a href="../index.html#services"><i class="bi bi-arrow-return-left"></i></a>
+              </button>
+            </div>
+            <div class="col">
+              <h2>Deployment e Testes</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- ======= Deployment CI/CD Section ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Deployment CI/CD</b></h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          No contexto das operações do sistema, o Jenkins foi uma ferramenta fundamental no processo de desenvolvimento,
+          uma vez que permitir uma integração constante e permite também fazer o deployment automatizado para
+          um ambiente de produção.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          <font color="#ff0000">O pipeline desenvolvido divide-se em cinco stages genéricos: Test, Build, DockerCreate,
+            DockerImagePush e Deploy.
+            Cada um destes stages usa diferentes comandos, associados à função definida pelo nome do stage mas tendo em
+            conta a tecnologia usada, como será explicado de seguida.</font>
+        </p>
+        <div class="row" data-aos="fade-right">
+          <div class="section-title">
+            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>1. Test</b>
+            </h5>
+          </div>
+          <p style="text-align: justify;">
+            <font color="#ff0000">No caso do backend do sistema, na fase Test, cada um dos microsserviços é testado e
+              uma vez que cada um destes foi realizado utilizando SpringBoot com maven, é executado o comando mvn test.
+              Já no caso do frontend do sistema, a tecnologia escolhida foi reactjs, logo é realizado um npm test.
+            </font>
+          </p>
+        </div>
+        <div class="row" data-aos="fade-left">
+          <div class="section-title">
+            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>2.
+                Build</b>
+            </h5>
+          </div>
+          <p style="text-align: justify;">
+            <font color="#ff0000">Este passo apenas foi implementado nos microsserviços que correspondem à parte do
+              backend do sistema e a sua principal função é verificar se existem erros durante o build dos mesmos. Como
+              tal o comando executado é mvn clean install -DskipTests.
+            </font>
+          </p>
+        </div>
+        <div class="row" data-aos="fade-right">
+          <div class="section-title">
+            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>3.
+                DockerCreate</b>
+            </h5>
+          </div>
+          <p style="text-align: justify;">
+            <font color="#ff0000">Este é o momento no qual o docker entra em ação. Cada um dos microsserviços tem um
+              ficheiro Dockerfile e é neste step que se faz o build do mesmo, executando os diferentes comandos
+              necessários para a inicialização do sistema. O comando associado a este step é portanto, docker build.
+            </font>
+          </p>
+        </div>
+        <div class="row" data-aos="fade-left">
+          <div class="section-title">
+            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>4.
+                DockerImagePush </b>
+            </h5>
+          </div>
+          <p style="text-align: justify;">
+            <font color="#ff0000">Foi utilizado o docker registry da ferramenta docker para colocar as imagens criadas
+              num local diferente, também para melhor gestão de espaço e recursos, bem como para uma solução mais
+              elegante. Assim, neste step é feito um push para o registry destas imagens.
+            </font>
+          </p>
+        </div>
+        <div class="row" data-aos="fade-right">
+          <div class="section-title">
+            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>5.
+                Deploy</b>
+            </h5>
+          </div>
+          <p style="text-align: justify;">
+            <font color="#ff0000">Neste último passo é feito, finalmente, o deploy do sistema para produção. Assim,
+              através do uso do comando sshagent, é feita a conexão à máquina onde este deploy será feito (por ssh) e
+              criados os containers com as imagens que estão presentes no registry. Para tal, em primeiro lugar é
+              necessário remover (caso existam) containers com o mesmo nome e também fazer pull das imagens do registry.
+              Depois de tudo isto é feita a inicialização dos containers.
+            </font>
+          </p>
+        </div>
+        <p style="text-align: justify; padding-top: 20px;" data-aos="fade-left">
+          <font color="#ff0000">Para um melhor controlo, cada um destes steps é opcional, isto é, é possível fazer a
+            execução desta pipeline com apenas alguns ou com todos. Para dar este tipo de liberdade, foram usados
+            parâmetros, que podem ser escolhidos pelo utilizador no momento do build, para que este execute os passos
+            pretendidos (o default é todos serem executados).
+            A nível de requisitos para o deploy do sistema o que é necessário é uma máquina com a plataforma docker
+            instalada, com um container a correr kafka e outro container a correr mysql. Assume-se ainda que nesta
+            máquina o sistema de ELK com logstash está configurado através de um docker compose para ser possível fazer
+            a configuração da monitorização. Já no caso dos requisitos de hardware da máquina, estes são bastante
+            básicos. A nível de RAM apenas será necessário cerca de 1GB, no entanto, a nível de memória em disco,
+            dependendo do tempo de execução do sistema, o espaço ocupado poderá escalar, dado o armazenamento de uma
+            grande quantidade de dados.
+            Para fazer o deploy apenas é necessário fazer pull das imagens do docker registry, criar os containers
+            necessários para essas imagens e dar start aos mesmos, que no fundo, foi o que foi explicado na execução do
+            Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e porta do kafka para que o
+            logback appender envie a informação recolhida para um tópico lido pelo logstash. Por sua vez, nos diferentes
+            serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search,
+            onde podem depois ser analisados no kibana.
+            Os dados desta monitorização correspondem a parte da informação disponibilizada posteriormente na API
+            exposta, no entanto aqui é possível fazer um maior número de queries sobre os mesmos. Para além disso, no
+            kibana foi construída e disponibilizada uma view com os pontos dos aviões num mapa, ficando a saber-se onde
+            estes se encontram. Esta informação pode ser confrontada posteriormente com a disponibilizada no frontend da
+            api para confirmação de que o sistema está correto.
+            Em termos de aspetos menos positivos, no nosso sistema não foi utilizado, nem kubernetes, nem docker-compose
+            e portanto não existe uma configuração out-of-the-box para o utilizador final (a não ser que este utilize o
+            jenkins). Para além disso, não temos environment variables, nem no projeto nem nos Jenkinsfiles, logo caso
+            fosse necessário estender o sistema, as portas e IPs têm de alterar nos respetivos lugares. No entanto, como
+            o sistema foi desenvolvido usando a plataforma Spring Boot, este aspeto não é muito preocupante, na medida
+            em que as mesmas podem ser alteradas, facilmente, no ficheiro application.properties.
+
+          </font>
+        </p>
+
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Stage</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Objetivo</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Tecnologias</b></td>
+          </tr>
+          <tr>
+            <td><b>Tool Install</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Instânciação e inicialização das variáveis e ferramentas necessárias á execução do
+                Pipeline.</font>
+            </td>
+            <td>SSH Command</td>
+          </tr>
+          <tr>
+            <td><b>Clone Repository</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Copia todo o código fonte necessário para a VM de implementação, presente no
+                repositório de desenvolvimento.</font>
+            </td>
+            <td>Git</td>
+          </tr>
+          <tr>
+            <td><b>Clone Repository</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Copia todo o código fonte necessário para a VM de implementação, presente no
+                repositório de desenvolvimento.</font>
+            </td>
+            <td>Git</td>
+          </tr>
+          <tr>
+            <td><b>Build</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Nesta fase do Pipeline é feita a compilação de cada uma dos componentes clonados
+                anteriormente e são gerados os fat jars para as apps rest-service e esp33_frontEndApp.</font>
+            </td>
+            <td>Maven, JDK 11</td>
+          </tr>
+          <tr>
+            <td><b>Testing</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000"> Corre os testes de Maven para as aplicações Spring Boot (rest-service,
+                esp33_frontEndApp).</font>
+            </td>
+            <td>Maven, JDK 11</td>
+          </tr>
+          <tr>
+            <td><b>Build and Deploy images to registry</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Nesta etapa são construídas as imagens Docker, a partir dos ficheiros Dockerfile de
+                cada componente e é feito o push dessas imagens para o registry.</font>
+            </td>
+            <td>Docker</td>
+          </tr>
+          <tr>
+            <td><b>Remote SSH</b></td>
+            <td style="text-align: justify;">
+              <font color="#ff0000">Efetuado o docker pull da imagem do registry e de seguida docker run na VM de
+                deployment (Playground).</font>
+            </td>
+            <td>SSH Command</td>
+          </tr>
+        </table>
+        <p style="padding-top: 20px"></p>
+      </div>
+
+      <hr class="hr5">
+
+      <!-- ======= Testes Section ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Testes</b></h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          De forma a testar o funcionamento dos módulos que constituem o sistema foram realizados
+          testes de integração, que têm como principal objectivo testar a aplicação desenvolvida, para verificar se
+          enviava, ou não, os resultados pretendidos em diferentes cenários.
+          <font color="#ff0000">Com o objetivo de testar as diversas chamadas à API foram escritos diversos cenários com
+            recurso à ferramenta Cucumber.</font>
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Todos os testes têm o mesmo pressuposto associado, pelo que, acabam por ser semelhantes, ou seja, em todos
+          eles após uma chamada à API é verificado o valor de retorno, comparando posteriormente com a
+          informação que deveria ser retornada caso os dados viessem diretamente dos repositórios. No entanto, o
+          comportamento por detrás destes é simulado através do uso de MockBeans, pois o
+          objetivo não era testar os repositórios.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Resumidamente, cada teste em si é bastante direto: após fazer o pedido à API
+          o resultado é comparado com os dados inseridos anteriormente, através do uso do Mock.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          <font color="#ff0000">Atualmente os testes desenvolvidos fazem parte da pipeline apresentada, isto é, os
+            testes podem ser executados a qualquer altura, com o intuito de verificar se os mesmos continuam a não
+            apresentar erros. No entanto, para correr os testes em si, de forma isolada, basta executar o comando <i>$
+              mvn test.</i>
+          </font>
+        </p>
+        <p style="padding-top: 20px"></p>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
