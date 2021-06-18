@@ -32,7 +32,7 @@ public class KafkaController {
     @Autowired
     public KafkaController(KafkaProd producer) throws FileNotFoundException, IOException {
         this.producer = producer;          
-        try (CSVReader csvReader = new CSVReader(new FileReader("src/main/resources/dataset.csv"));) {
+        try (CSVReader csvReader = new CSVReader(new FileReader("src/main/java/es_ontrack/bus_producer/src/dataset.csv"));) {
             String[] values = null;
             while ((values = csvReader.readNext()) != null) {
                 records.add(Arrays.asList(values));
@@ -41,7 +41,7 @@ public class KafkaController {
     }
     
     
-    @Scheduled(fixedRate=1000)
+    @Scheduled(fixedRate=100)
     public void messageToTopic(){
     	i+=1;
     	if (i > records.size()) {
@@ -50,9 +50,9 @@ public class KafkaController {
     	String message = "{'node_id':'"+records.get(i).get(1)+"','location_id':'"+records.get(i).get(2)+"','head': '"+records.get(i).get(3)+"','lon':'"+records.get(i).get(4)+
     			"','lat':'"+records.get(i).get(5)+"', 'speed': "+records.get(i).get(6)+"}";
     	
-        this.producer.send("autobus",message);
+        this.producer.send("esp23_buses",message);
         //log.info("Publishing data to topic data: "+message);
-
+    	System.out.println(message);
         //return "Published message: "+message ;
     }
 }
