@@ -1,24 +1,34 @@
 package es_ontrack.backend.src.api;
 
+import java.security.Principal;
+
+import org.influxdb.InfluxDB;
+import org.influxdb.dto.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es_ontrack.backend.src.api.forms.LoginForm;
 import es_ontrack.backend.src.api.forms.RegisterForm;
 import es_ontrack.backend.src.database.DBControler;
 import es_ontrack.backend.src.database.models.User;
+import es_ontrack.backend.src.influx.InfluxDbUtils;
 
 @RestController
-
+@CrossOrigin()
 public class RestControler {
 
     @Autowired
     private DBControler dbControler;
+
+    @Autowired
+    private InfluxDbUtils influxdbUtils;
 
     // private static final Logger logger = LogManager.getLogger(); TODO: Set up
     // logger
@@ -81,7 +91,20 @@ public class RestControler {
 
     // #endregion
 
+    // #region test influxDB
+    @PostMapping("/influx_test")
+    public ResponseEntity<String> sendToInfluxDB(@RequestParam(name = "pointX") Double pointX,
+            @RequestParam(name = "pointY") Double pointY) {
+
+        InfluxDB influxDB = influxdbUtils.getInfluxDB();
+
+        influxDB.write(Point.measurement("TEST").addField("pointX", pointX).addField("pointY", pointY).build());
+
+        return ResponseEntity.ok().body("Done!");
+    }
+
     // #region GETS
+
     @GetMapping("/logout")
     public ResponseEntity<String> logout() {
         // handle logout

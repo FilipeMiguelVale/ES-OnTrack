@@ -2,18 +2,30 @@ package es_ontrack.backend.src.models;
 
 import java.util.Date;
 
+import org.influxdb.annotation.Column;
+import org.influxdb.annotation.Measurement;
+
+@Measurement(name = "bus")
 public class Bus {
-	
+
+	@Column(name = "id")
 	private String node_id;
+	@Column(name = "location")
 	private int location_id;
+	@Column(name = "heading")
 	private double head;
+	@Column(name = "longitude")
 	private double lon;
+	@Column(name = "latitude")
 	private double lat;
+	@Column(name = "speed")
 	private double speed;
+	@Column(name = "time")
 	private Date ts;
-	
-	public Bus(){}
-	
+
+	public Bus() {
+	}
+
 	public Bus(String node_id, int location_id, double head, double lon, double lat, double speed) {
 		super();
 		this.node_id = node_id;
@@ -23,8 +35,6 @@ public class Bus {
 		this.lat = lat;
 		this.speed = speed;
 	}
-
-
 
 	public String getNode_id() {
 		return node_id;
@@ -81,6 +91,5 @@ public class Bus {
 	public void setTs(Date ts) {
 		this.ts = ts;
 	}
-	
-	
+
 }

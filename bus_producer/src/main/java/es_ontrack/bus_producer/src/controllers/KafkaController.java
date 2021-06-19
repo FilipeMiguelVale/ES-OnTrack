@@ -26,33 +26,40 @@ public class KafkaController {
     private final KafkaProd producer;
     private int i = 0;
     private List<List<String>> records = new ArrayList<List<String>>();
-    //private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-    //private static final Logger log = LoggerFactory.getLogger(CoinController.class);
+    // private static final SimpleDateFormat dateFormat = new
+    // SimpleDateFormat("HH:mm:ss");
+    // private static final Logger log =
+    // LoggerFactory.getLogger(CoinController.class);
 
     @Autowired
     public KafkaController(KafkaProd producer) throws FileNotFoundException, IOException {
-        this.producer = producer;          
-        try (CSVReader csvReader = new CSVReader(new FileReader("src/main/java/es_ontrack/bus_producer/src/dataset.csv"));) {
+        this.producer = producer;
+        try (CSVReader csvReader = new CSVReader(
+                new FileReader("src/main/java/es_ontrack/bus_producer/src/dataset.csv"));) {
             String[] values = null;
             while ((values = csvReader.readNext()) != null) {
                 records.add(Arrays.asList(values));
-            } 
+            }
         }
     }
-    
-    
-    @Scheduled(fixedRate=100)
-    public void messageToTopic(){
-    	i+=1;
-    	if (i > records.size()) {
-    		i = 1;
-    	}
-    	String message = "{'node_id':'"+records.get(i).get(1)+"','location_id':'"+records.get(i).get(2)+"','head': '"+records.get(i).get(3)+"','lon':'"+records.get(i).get(4)+
-    			"','lat':'"+records.get(i).get(5)+"', 'speed': "+records.get(i).get(6)+"}";
-    	
-        this.producer.send("esp23_buses",message);
-        //log.info("Publishing data to topic data: "+message);
-    	System.out.println(message);
-        //return "Published message: "+message ;
+
+    @Scheduled(fixedRate = 100)
+    public void messageToTopic() {
+        i += 1;
+        if (i > records.size()) {
+            i = 1;
+        }
+        for (int j = 0; j < records.get(i).size(); j++)
+            if (records.get(i).get(j).isEmpty())
+                records.get(i).set(j, "null");
+
+        String message = "{'node_id':'" + records.get(i).get(1) + "','location_id':'" + records.get(i).get(2)
+                + "','head': '" + records.get(i).get(3) + "','lon':'" + records.get(i).get(4) + "','lat':'"
+                + records.get(i).get(5) + "', 'speed': " + records.get(i).get(6) + "}";
+
+        this.producer.send("esp23_buses", message);
+        // log.info("Publishing data to topic data: "+message);
+        System.out.println(message);
+        // return "Published message: "+message ;
     }
 }
