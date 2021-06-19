@@ -8,24 +8,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import es_ontrack.backend.src.api.forms.LoginForm;
 import es_ontrack.backend.src.api.forms.RegisterForm;
 import es_ontrack.backend.src.database.DBControler;
 import es_ontrack.backend.src.database.models.User;
-import lombok.extern.log4j.Log4j2;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-
-@Log4j2
 @RestController
 public class RestControler {
 
     @Autowired
     private DBControler dbControler;
-    
-    private static final Logger LOG = Logger.getLogger(RestControler.class.getName());
 
+    // private static final Logger logger = LogManager.getLogger(); TODO: Set up
+    // logger
 
     private static class Response {
         String response;
