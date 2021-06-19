@@ -108,7 +108,7 @@ pipeline {
         */
         stage("Build Backend Image"){
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')}
             }
             steps{
                 script{
@@ -121,7 +121,7 @@ pipeline {
         
         stage("Build React Image"){
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')}
             }
             steps{
                 script{
@@ -134,7 +134,7 @@ pipeline {
 
         stage("Build Producer Image"){
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')}
             }
             steps{
                 script{
@@ -147,7 +147,7 @@ pipeline {
         
         stage("Publish images"){
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')}
             }
             steps{
                 script{
@@ -164,7 +164,7 @@ pipeline {
 
             stage('Deploy React') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY') || (PARAMETER == 'FAST DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY') || (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -191,7 +191,7 @@ pipeline {
 
         stage('Deploy Backend') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -218,7 +218,7 @@ pipeline {
         
         stage('Deploy Producer') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
