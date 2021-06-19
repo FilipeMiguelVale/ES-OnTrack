@@ -2,7 +2,6 @@ package es_ontrack.backend.src.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +14,7 @@ import es_ontrack.backend.src.database.DBControler;
 import es_ontrack.backend.src.database.models.User;
 
 @RestController
+
 public class RestControler {
 
     @Autowired
@@ -41,12 +41,16 @@ public class RestControler {
     public ResponseEntity<Response> login(@RequestBody LoginForm login) {
 
         Response result = new Response();
-        result.setResponse("Invalid username or password");
 
-        if (dbControler.canLogin(login.getEmail(), login.getPasswd())) {
-            result.setResponse("Done");
+        String userEmail = login.getEmail();
+        String userPassword = login.getPasswd();
+
+        if (!dbControler.canLogin(userEmail, userPassword)) {
+            result.setResponse("Invalid username or password");
+            return ResponseEntity.ok().body(result);
         }
 
+        result.setResponse("Done");
         return ResponseEntity.ok().body(result);
     }
 
@@ -69,7 +73,7 @@ public class RestControler {
     public ResponseEntity<String> delete_user(@PathVariable String email) {
         if (!dbControler.delete_user(email))
             return ResponseEntity.ok().body("User Not Found");
-        if (!dbControler.get_user(email))
+        if (dbControler.find_user(email) == null)
             return ResponseEntity.ok().body("Delete successful");
 
         return ResponseEntity.ok().body("Delete unsuccessful");

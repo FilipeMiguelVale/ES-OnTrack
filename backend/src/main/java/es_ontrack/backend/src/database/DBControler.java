@@ -1,7 +1,7 @@
 package es_ontrack.backend.src.database;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +16,9 @@ public class DBControler {
 
     public boolean canLogin(String email, String passwd) {
 
-        List<User> user = userRepository.findByEmail(email);
+        User user = get_user(email);
 
-        if (user.isEmpty())
-            return false;
-        if (!user.get(0).getPassword().equals(passwd))
+        if (!user.getPassword().equals(passwd))
             return false;
 
         return true;
@@ -42,17 +40,21 @@ public class DBControler {
 
     public Boolean delete_user(String email) {
 
-        List<User> userToDelete = userRepository.findByEmail(email);
+        User user = get_user(email);
 
-        if (userToDelete.isEmpty())
-            return false;
-
-        userRepository.delete(userToDelete.get(0));
+        userRepository.delete(user);
         return true;
     }
 
-    public boolean get_user(String email) {
-        return !userRepository.findByEmail(email).isEmpty();
+    public User find_user(String email) {
+        return get_user(email);
+    }
+
+    private User get_user(String email) {
+        Optional<User> users = userRepository.findByEmail(email);
+        if (users.isEmpty())
+            return null;
+        return users.get();
     }
 
     public User[] get_all_users() {
