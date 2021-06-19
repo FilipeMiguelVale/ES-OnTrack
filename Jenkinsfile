@@ -17,7 +17,7 @@ pipeline {
                     properties([
                         parameters([
                             choice(
-                                choices: ['DEPLOY AND TEST', 'DEPLOY', 'TEST'], 
+                                choices: ['ALL','BUILD AND TEST','TEST AND DEPLOY', 'DEPLOY', 'TEST', 'BUILD','FAST DEPLOY'], 
                                 name: 'PARAMETER'
                             )
 
@@ -40,7 +40,7 @@ pipeline {
 
 		stage ('Build Backend') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST') || (PARAMETER == 'BUILD')}
             }
             steps {
 			    dir("backend"){
@@ -51,7 +51,7 @@ pipeline {
 
         stage ('Build Producer') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST') || (PARAMETER == 'BUILD')}
             }
             steps {
 			    dir("bus_producer"){
@@ -62,7 +62,7 @@ pipeline {
 
         stage ('Build Selenium') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST') || (PARAMETER == 'BUILD')}
             }
             steps {
 			    dir("selenium_dev"){
@@ -73,7 +73,7 @@ pipeline {
 		
 		stage ('Testing Backend') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST')|| (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'TEST')}
             }		    
             steps{
 			    dir("backend"){
@@ -83,7 +83,7 @@ pipeline {
 		}
 		stage ('Testing React') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
+                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST')|| (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'TEST')}
             }
 		    steps{
 			    dir("backend"){
@@ -91,10 +91,10 @@ pipeline {
 			    }
 		    }
 		}
-		
+		/*
 		stage ('Deploying Artifacts') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'DEPLOY')}
             }            
             steps{
                 dir("backend"){
@@ -105,7 +105,7 @@ pipeline {
 			    }
             }
         }
-        
+        */
         stage("Build Backend Image"){
 			when {
                 expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
@@ -164,7 +164,7 @@ pipeline {
 
             stage('Deploy React') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY') || (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -191,7 +191,7 @@ pipeline {
 
         stage('Deploy Backend') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -218,7 +218,7 @@ pipeline {
         
         stage('Deploy Producer') {
 			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')}
+                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'DEPLOY')|| (PARAMETER == 'FAST DEPLOY')}
             } 
             steps {
                  withCredentials([usernamePassword(credentialsId: 'Esp23_playground_vm', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
