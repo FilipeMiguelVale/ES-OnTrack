@@ -75,86 +75,42 @@
               </button>
             </div>
             <div class="col">
-              <h2>Manual de utilização</h2>
+              <h2>Testes</h2>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- ======= Interação com o Utilizador Section ======= -->
+
+      <!-- ======= Testes Section ======= -->
       <div class="container">
-        <div class="section-title">
-          <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Interação com o Utilizador</b></h3>
-        </div>
-
-        <p style="text-align: justify;">
-          A aplicação do sistema <b>OnTrack</b>, incialmente, pede ao utilizador que inicie sessão. Caso o utilizador
-          não tenha ainda uma conta associada, este pode selecionar a opção de se registar na aplicação para ter acesso
-          a toda a informação.
-          está dividida em 5 secções, que se encontram no menu lateral, do lado esquerdo.
-          Dashboard, Bus Details, Maps, Bus e User Table,
+        <p style="text-align: justify;" data-aos="fade-right">
+          De forma a testar o funcionamento dos módulos que constituem o sistema foram realizados
+          testes de integração, que têm como principal objectivo testar a aplicação desenvolvida, para verificar se
+          enviava, ou não, os resultados pretendidos em diferentes cenários.
+          Com o objetivo de testar as diversas chamadas à API foram escritos diversos cenários com recurso à ferramenta
+          Cucumber.
         </p>
-        <p style="text-align: justify;">
-          Após o início de sessão, é apresentado ao utilizador a página inicial da aplicação <b>OnTrack</b>. Do lado
-          direito, o utilizador pode navegar entre cinco páginas diferentes:
-          Dashboard (página principal), Bus Details, Maps, Bus e User Table, que serão abordadas em seguida.
+        <p style="text-align: justify;" data-aos="fade-right">
+          Todos os testes têm o mesmo pressuposto associado, pelo que, acabam por ser semelhantes, ou seja, em todos
+          eles após uma chamada à API é verificado o valor de retorno, comparando posteriormente com a
+          informação que deveria ser retornada caso os dados viessem diretamente dos repositórios. No entanto, o
+          comportamento por detrás destes é simulado através do uso de MockBeans, pois o
+          objetivo não era testar os repositórios.
         </p>
-
-        <div class="row" data-aos="fade-right">
-          <div class="section-title">
-            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;">
-              <b>Dashboard</b>
-            </h5>
-          </div>
-          <p style="text-align: justify;">
-            A secção <i>Dashboard</i> dá ao utilizador <font color="#ff0000">......... </font>
-          </p>
-        </div>
-
-        <div class="row" data-aos="fade-right">
-          <div class="section-title">
-            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>Bus
-                Details</b>
-            </h5>
-          </div>
-          <p style="text-align: justify;">
-            A secção <i>Bus Details</i> dá ao utilizador <font color="#ff0000">......... </font>
-          </p>
-        </div>
-
-        <div class="row" data-aos="fade-right">
-          <div class="section-title">
-            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>Maps</b>
-            </h5>
-          </div>
-          <p style="text-align: justify;">
-            A secção <i>Maps</i> dá ao utilizador <font color="#ff0000">......... </font>
-          </p>
-        </div>
-
-        <div class="row" data-aos="fade-right">
-          <div class="section-title">
-            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>Bus</b>
-            </h5>
-          </div>
-          <p style="text-align: justify;">
-            A secção <i>Bus</i> dá ao utilizador <font color="#ff0000">......... </font>
-          </p>
-        </div>
-
-        <div class="row" data-aos="fade-right">
-          <div class="section-title">
-            <h5 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 20px;"><b>User
-                Table</b>
-            </h5>
-          </div>
-          <p style="text-align: justify;">
-            A secção <i>User Table</i> dá ao utilizador <font color="#ff0000">......... </font>
-          </p>
-        </div>
-
+        <p style="text-align: justify;" data-aos="fade-right">
+          Resumidamente, cada teste em si é bastante direto: após fazer o pedido à API
+          o resultado é comparado com os dados inseridos anteriormente, através do uso do Mock.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          <font color="#ff0000">Atualmente os testes desenvolvidos fazem parte da pipeline apresentado, isto é, os
+            testes podem ser executados a qualquer altura, com o intuito de verificar se os mesmos continuam a não
+            apresentar erros. No entanto, para correr os testes em si, de forma isolada, basta executar o comando <i>$
+              mvn test.</i>
+          </font>
+        </p>
         <p style="padding-top: 20px"></p>
       </div>
+
     </section>
   </main>
   <!-- End #main -->

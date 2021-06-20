@@ -51,6 +51,8 @@
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Início</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
+          <li><a href="#video" class="nav-link scrollto"><i class="bx bx-video"></i>
+              <span>Demo</span></a></li>
           <li><a href="#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i> <span>Milestones</span></a>
           </li>
           <li><a href="#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a></li>
@@ -81,34 +83,29 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
-
         <div class="section-title">
           <h2>Documentação</h2>
           </br>
           <p style="text-align: justify;">
             Se pretende saber mais sobre o <b
               style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1);">OnTrack</b>
-            visite as várias secções de documentação disponíveis, onde pode encontrar a descrição do projeto, personas &
-            scenarios,
-            arquitetura e muito mais.
+            visite as várias secções de documentação disponíveis, onde pode encontrar a descrição do projeto, personas e
+            scenarios, especificações do sistema, arquitetura, e muito mais.
           </p>
-          <!--<p> Link para o codeUa do projeto: <a href="http://code.ua.pt/projects/es-2020-2021-p23">Code.ua</a>.</p>
-          <p> Link para a wiki do projeto: <a href="http://code.ua.pt/projects/es-2020-2021-p23/wiki">wiki</a>.</p>
-          <p> Link para o código do projeto: <a href="https://github.com/FilipeMiguelVale/ES-OnTrack"> github</a>.</p>-->
         </div>
         </br></br>
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
             <div class="icon"><i class="bi bi-card-text"></i></div>
-            <h4 class="title"><a href="components/description.html">Descrição</a></h4>
+            <h4 class="title"><a href="components/description.html">Área do cliente</a></h4>
             <p class="description" style="text-align: justify;">
               Se procura perceber melhor o conceito deste projeto, tal como as features que ele oferece e as tecnologias
-              que utiliza, está no sítio certo. Saiba mais!
+              que utiliza, está no sítio certo.
             </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="bi bi-signpost-2-fill"></i></div>
-            <h4 class="title"><a href="components/vision.html">Visão</a></h4>
+            <h4 class="title"><a href="components/vision.html">Visão do sistema</a></h4>
             <p class="description" style="text-align: justify;">
               O objetivo do <b>OnTrack</b> é proporcionar uma sistema simples e interativo, que serve não só os
               utilizadores dos autocarros do Porto como também o administrador/gestor do sistema.
@@ -123,25 +120,47 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
             <div class="icon"><i class="bi bi-layers-half"></i></div>
-            <h4 class="title"><a href="components/architecture.html">Arquitetura e Modelo Tecnológico</a></h4>
+            <h4 class="title"><a href="components/architecture.html">Arquitetura do sistema</a></h4>
             <p class="description" style="text-align: justify;">
               A arquitetura é um dos principais pilares para uma clara compreensão do sistema, uma vez que define a sua
               estrutura e estabelece os relacionamentos entre todas as suas partes constituintes.
             </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-layers-fill"></i></div>
-            <h4 class="title"><a href="components/deployment.html">Deployment e Testes</a></h4>
+            <div class="icon"><i class="bi bi-code-slash"></i></div>
+            <h4 class="title"><a href="components/deployment.html">Área do developer</a></h4>
             <p class="description" style="text-align: justify;">
-              De forma a entender melhor as operações do sistema, é necessário entender como está organizado o pipepline
-              e o tipos de testes do sistema.
+              De forma a entender melhor as área do developer, é necessário entender o insight no trabalho feito durante
+              o desenvolvimento, incluindo as plataformas usadas, runtimes, portas, descrições sobre o flow de dados,
+              etc.
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon"><i class="bi bi-calendar3-range"></i></div>
+            <h4 class="title"><a href="components/tests.html">Testes</a></h4>
+            <p class="description" style="text-align: justify;">
+              Desde as features criadas, os cenários de cada feature, a implementação para cada teste e a plataforma que
+              serve de base
+              para a execução destes testes, pode-se encontrar aqui.
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon"><i class="bi bi-back"></i></div>
+            <h4 class="title"><a href="components/operations.html">Operações</a></h4>
+            <p class="description" style="text-align: justify;">
+              A documentação relativa às operações que permitiram a Integração contínua do sistema podem ser encontradas
+              nesta área, onde é possível encontrar informação acerca de todos os métodos de DevOps que foram
+              implementados,
+              incluindo Jenkins, Dockerfile, testes, monitorização e todas as restantes ferramentas utilizadas.
             </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
             <div class="icon"><i class="bi bi-book-fill"></i></div>
             <h4 class="title"><a href="components/manual.html">Manual de utilização</a></h4>
             <p class="description" style="text-align: justify;">
-              Se pretende fazer o deploy do <b>OnTrack</b>, basta seguir o manual, passo a passo.
+              Nesta secção pode obter informações relativas ao manual de utilização, onde são específicadas os vários
+              requisitos e passos necessários a fazer um correto deployment do sistema. Aqui, são descritos todas as
+              etapas, passo a passo, incluindo a criação dos containers.
             </p>
           </div>
         </div>
@@ -170,10 +189,23 @@
     </section>
     <!-- End Services Section -->
 
-    <!-- ======= Resume Section ======= -->
-    <section id="milestones" class="resume section-bg">
+    <!-- ======= Video Section ======= -->
+    <section id="video" class="video section-bg">
       <div class="container">
 
+        <div class="section-title">
+          <h2>Demo</h2>
+          </br>
+          <video autoplay muted width="100%" height="100%" controls>
+            <source src="assets/img/mov_bbb.mp4" type="video/mp4">
+          </video>
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="milestones" class="resume">
+      <div class="container">
         <div class="section-title">
           <h2>Milestones</h2>
           <p>
@@ -182,7 +214,6 @@
               <b>aqui</b></a>.
           </p>
         </div>
-
         <div class="row">
           <div class="resume-item">
             <h4>Milestone 0</h4>
@@ -239,20 +270,16 @@
               como o esperado.
             </p>
           </div>
-
-
-
         </div>
-
       </div>
-    </section><!-- End Resume Section -->
+    </section>
+    <!-- End Resume Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="testimonials">
+    <section id="team" class="testimonials section-bg">
       <div class="container">
         <div class="section-title">
           <h2>Equipa</h2>
-          <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
         </div>
 
         <div class="row">
@@ -307,77 +334,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ======= Contact Section ======= -->
-    <!--<section id="contact" class="contact section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contacto</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-            </div>
-
-          </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section>-->
-    <!-- End Contact Section -->
   </main>
   <!-- End #main -->
 
