@@ -52,7 +52,7 @@ public class InfluxControler {
     }
 
     @GetMapping(value = "/location_bus")
-    public ResponseEntity<List<LocationBus>> getLocationBus(@RequestParam(name = "id") String id,
+    public ResponseEntity<List<BusData>> getLocationBus(@RequestParam(name = "id") String id,
             @RequestParam(name = "time") String time) {
         return ResponseEntity.ok().body(influxdbUtils.getLocationBus(id, time));
     }

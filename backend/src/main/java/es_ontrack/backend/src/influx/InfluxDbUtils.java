@@ -99,8 +99,8 @@ public class InfluxDbUtils {
 
     }
 
-    public List<LocationBus> getLocationBus(String id, String time) {
-        String query = "select latitude,longitude from bus where id='" + id + "'";
+    public List<BusData> getLocationBus(String id, String time) {
+        String query = "select id, speed, latitude, longitude,location from bus where id='" + id + "'";
 
         if (!time.equals("ALL"))
             query += " and time > now() - " + time;
@@ -109,7 +109,7 @@ public class InfluxDbUtils {
 
         InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
 
-        return resultMapper.toPOJO(result, LocationBus.class);
+        return resultMapper.toPOJO(result, BusData.class);
     }
     
     public BusData getBus(String id) {

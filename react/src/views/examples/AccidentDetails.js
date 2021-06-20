@@ -61,6 +61,7 @@ class AccidentDetails extends React.Component {
     this.changeValue = this.changeValue.bind(this);
 
     this.state = {
+      table_data : [],
       showIndex: false,
       showBullets: true,
       infinite: true,
@@ -90,6 +91,7 @@ class AccidentDetails extends React.Component {
      },
       dropDownValue: 0,
       dropDownOpen: false,
+      error:false,
     };
     this.numImg = 0
     this.images = [
@@ -143,6 +145,30 @@ class AccidentDetails extends React.Component {
       }
     ));
     console.log(this.state.data)
+
+    const response1 = await fetch(
+              `/statistics/location_bus?id=${this.state.data.id}&time=ALL`
+          );
+
+          const result1 = await response1.json();
+          console.log(result1)
+          if(result1.length===0)
+              this.setState(
+             prevState => (
+                 {
+                     error: "No Buses to Show"
+                 }
+             )
+         );
+          else
+              this.setState(
+                  prevState => (
+                      {
+                          table_data: result1,
+                          error: false
+                      }
+                  )
+              );
 
   }
 
@@ -404,6 +430,49 @@ class AccidentDetails extends React.Component {
     })
   }
 
+  renderArray = (value,index) => {
+    return(
+      <tr key={index} >
+        {/*<th scope="row" width="5%" style={{textAlign:"center"}}>*/}
+        {/*  <span className="mb-0 text-sm">*/}
+        {/*    {value["id"]}<br/>*/}
+        {/*  </span>*/}
+        {/*</th>*/}
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
+            {value["time"]}
+          </span>
+        </th>
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
+            {value["location"]}
+          </span>
+        </th>
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
+            {value["latitude"]}
+          </span>
+        </th>
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
+            {value["longitude"]}
+          </span>
+        </th>
+       <th scope = "row" style={{textAlign:"center"}}>
+           <span className="mr-2">{value["speed"]}</span>
+           <div>
+               <Progress
+                  max="100"
+                  value={value["speed"]}
+                  barClassName={this.getBarColor(value["speed"])}
+                />
+            </div>
+        </th>
+
+      </tr>
+    )
+  }
+
   render() {
     return (
       <>
@@ -503,7 +572,7 @@ class AccidentDetails extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                    
+                    {this.state["table_data"].map(this.renderArray).reverse()}
                   </tbody>
                   </Table>
 
