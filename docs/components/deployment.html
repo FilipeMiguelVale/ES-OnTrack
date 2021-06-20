@@ -127,50 +127,6 @@
             <td>3001</td>
           </tr>
         </table>
-        <p style="text-align: justify; padding-top: 10px;" data-aos="fade-right">
-          <font color="#ff0000"> Segundo a atual implementação do sistema, tal como já foi referido, este é composto por
-            diversos componentes, alguns deles diretamente relacionados com os microsserviços implementados. Apesar de
-            todos eles correrem na mesma máquina, os seus papéis são distintos, dado que a cada um deles estão
-            associados diferentes responsabilidades. Um outro aspeto que vale a pena reforçar é o facto de a atual
-            arquitetura, baseada em microsserviços, tornar a tarefa de criação de serviços, ou até mesmo a extensão dos
-            atuais, bastante simplificada. O atual sistema é composto por cinco microsserviços distintos, que acabam por
-            se interligar de forma a satisfazer os requisitos do sistema.
-            O microsserviço DatabaseConnector tem como principal objetivo permitir uma ligação entre a OpenSky API, os
-            repositórios existentes e o restante sistema. Na verdade, a este serviço está associado um schedule
-            (atualmente configurado segundo um intervalo de dez minutos), que tem como objetivo não só guardar a
-            informação mais recente fornecida pela API externa, como também enviar essa mesma informação para os
-            diferentes tópicos existentes. Os dados presentes nos diversos repositórios podem ser acedidos,
-            posteriormente, através da REST API desenvolvida, pelo serviço PlaneJaneAggregator. Este último, tal como o
-            nome dá a indicar, tem como objetivo agregar a informação presente nos diversos serviços, a fim de os
-            agrupar numa só REST API, a ser usada pelo website, com o intuito de apresentar aos utilizadores não só os
-            dados mais recentes como também a informação que pode ser extraída através dos dados inicialmente fornecidos
-            pela OpenSky API. Esta extração de informação é obtida após o processamento presente nos dois restantes
-            microserviços: RealtimeProcessing e StatisticsProcessor. Em ambos é feito uso de Kafka Streams, com o
-            objetivo de processar os dados enviados para os diversos tópicos. O primeiro tem como objetivo analisar os
-            dados presentes no tópico esp55_state_vector_velocity e esp55_state_vector_position para calcular a
-            velocidade média de cada voo e a sua rota, enquanto que o segundo tem como objetivo analisar os dados
-            presentes no tópico esp55_state_vector_routes, com o intuito de apresentar dados estatísticos relativos aos
-            diversos voos, nomeadamente as rotas mais comuns.
-            Todos os microsserviços acima enumerados têm um ficheiro application.properties a si associado, no qual é
-            possível configurar os diversos IP e Ports, o que simplifica o processo de reconfiguração, caso este seja
-            necessário.
-            Dadas as características do sistema, descritas, por alto, anteriormente, é possível verificar que existem
-            ainda outras features a ser desenvolvidas. Dada a arquitetura do sistema, é bastante direto o processo de
-            adição de novos componentes, isto é, microsserviços, dado que apenas terá que seguir a lógica até então
-            aplicada e garantir que o microsserviço desenvolvido consegue efetivamente comunicar com o restante sistema.
-            Um aspeto importante de referir é que, atualmente, não é feita nenhuma gestão dos dados recolhidos a partir
-            da API OpenSky, isto é, com o passar do tempo os dados vão deixando de ser relevantes, dado que irão
-            referir-se a dados obsoletos, e dado que a quantidade de dados enviados, por pedido, pela API, é ainda
-            considerável, é de supor que, com o decorrer do tempo seja necessário mudar o atual esquema de dados, de
-            forma a atualizar os dados em função de um determinado ICAO, ou seja, guardando apenas os dados atuais.
-            Alternativamente, poder-se-á optar por eliminar os dados com base em timestamps, para evitar a acumulação
-            dos mesmos.
-            Como já foi mencionado, os dados apresentados no sistema PlaneJane são provenientes da API OpenSky. Para
-            poder fazer uma quantidade maior de pedidos é necessário criar uma conta neste serviço. Esta conta terá a si
-            associada credenciais, que deverão ser substituídas pelas atuais, de forma a que o sistema continue a ser
-            capaz de realizar pedidos.
-          </font>
-        </p>
         <p style="padding-top: 20px"></p>
       </div>
     </section>

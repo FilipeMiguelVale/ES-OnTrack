@@ -48,14 +48,17 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a></li>
+          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a>
+          </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
           <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
               <span>Demo</span></a></li>
-          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i> <span>Milestones</span></a>
+          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+              <span>Milestones</span></a>
           </li>
-          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a></li>
+          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a>
+          </li>
         </ul>
       </nav>
 
@@ -85,15 +88,18 @@
           </div>
           <p style="text-align: justify;" data-aos="fade-right">
             Após o processo de levantamento de requisitos e da escolha de uma arquitetura adequada aos
-            mesmos, foi preciso escolher quais as ferramentas que melhor se adequam ao desenvolvimento do sistema. Assim,
-            a nível de back-end implementou-se o sistema com recurso à plataforma Spring Boot, uma vez que permite criar a
+            mesmos, foi preciso escolher quais as ferramentas que melhor se adequam ao desenvolvimento do sistema.
+            Assim,
+            a nível de back-end implementou-se o sistema com recurso à plataforma Spring Boot, uma vez que permite criar
+            a
             base do projeto de forma rápida e eficiente. Relativamente ao front-end, dado que um dos requisitos
             dos sistema passa por uma rápida atualização das componentes visuais do website, optou-se pelo ReactJS, pois
             permite atualizar componentes individualmente, de forma rápida, eficiente, sem serem necessários muitos
             recursos.
           </p>
           <p style="text-align: justify;" data-aos="fade-left">
-            Como referido anteriormente, o sistema foi desenvolvido através do uso da plataforma Spring Boot. No entanto,
+            Como referido anteriormente, o sistema foi desenvolvido através do uso da plataforma Spring Boot. No
+            entanto,
             também foram usadas diversas outras ferramentas, como o Docker, Docker Registry e Jenkins, que auxiliam o
             processo de automatização e atualização do sistema e a plataforma Kafka, que permite que os diversos
             componentes do sistema comuniquem entre si de forma rápida.
@@ -106,8 +112,8 @@
           </p>
           <p style="text-align: justify;" data-aos="fade-left">
             Para além das ferramentas acima enumeradas, existem ainda aquelas cujo uso, apesar de não estar relacionado
-            com o <i>runtime</i>, são importantes, como por exemplo o <font color="#ff0000">Logback, Logstash,
-            Elasticsearch e Kibana</font>, uma vez que o seu uso permite uma melhor gestão dos logs, facilitando o processo de
+            com o <i>runtime</i>, são importantes, como por exemplo o Logback, Logstash,
+            Elasticsearch e Kibana, uma vez que o seu uso permite uma melhor gestão dos logs, facilitando o processo de
             verificação e validação do estado do sistema.
           </p>
           <p style="text-align: justify;" data-aos="fade-left">
@@ -129,16 +135,13 @@
         <div class="container">
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 30px"><b>Bus-Producer</b></h5>
           <p style="text-align: justify;" data-aos="fade-left">
-            Os dados recolhidos são enviados através de um script escrito em Python que desempenho o papel de um
-            producer de Kafka, enviando os dados para um tópico de Kafka.
+            Os dados recolhidos são enviados através de um script escrito em Java que desempenha o papel de um producer
+            de Kafka, enviando os dados para um tópico de Kafka.
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Back-end</b></h5>
           <p style="text-align: justify;" data-aos="fade-right">
-            A aplicação Spring boot é responsável pela interligação de todos os componentes. Esta, possui um consumer e
-            um producer de Kafka, que recebe os dados no tópico para o qual o script em Python está a enviar. Estes
-            mesmos dados são processados e, quando <font color="#ff0000">detetado um autocarro novo são enviados pelo
-              producer para o outro
-              tópico de Kafka.</font>
+            A aplicação Spring Boot é responsável pela interligação de todos os componentes. Esta, possui um consumer
+            Kafka, que recebe os dados no tópico para o qual o script está a enviar.
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Database MySQL</b></h5>
           <p style="text-align: justify;" data-aos="fade-left">
@@ -154,11 +157,12 @@
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Front-end</b></h5>
           <p style="text-align: justify;" data-aos="fade-left">
-            O front-end é uma aplicação React, responsável por apresentar a informação dos autocarros, recebida e
-            processada, para uso por parte dos utilizadores, tendo uma interação back-end &lt-&gt Utilizador.
-            Esta aplicação apresenta uma secção para a visualização dos autocarros em tempo real, outra secção para
-            selecionar um autocarro e ver toda a informação relativa ao mesmo, outra secção para ver o histórico dos
-            autocarros e uma secção para informação relativa aos utilizadores.
+            <font color="#ff0000">O front-end é uma aplicação React, responsável por apresentar a informação dos
+              autocarros, recebida e
+              processada, para uso por parte dos utilizadores, tendo uma interação back-end &lt-&gt Utilizador.
+              Esta aplicação apresenta uma secção para a visualização dos autocarros em tempo real, outra secção para
+              selecionar um autocarro e ver toda a informação relativa ao mesmo, outra secção para ver o histórico dos
+              autocarros e uma secção para informação relativa aos utilizadores.</font>
           </p>
         </div>
 
@@ -166,25 +170,8 @@
 
         <div class="container">
           <div class="section-title">
-            <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Modelo Tecnológico</b></h3>
+            <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-bottom: 20px;"><b>Modelo Tecnológico</b></h3>
           </div>
-          <p style="text-align: justify;" data-aos="fade-right">
-            Relativamente às tecnologias usadas, todos os microsserviços têm por base a plataforma
-            Springboot, o que facilita a conjugação de todos os componentes de cada um dos sistemas. <font color="#ff0000">O microsserviço
-            DatabaseConnector, para além de Springboot, faz ainda uso do MySQL, para permitir persistência, e da
-            tecnologia Kafka para poder enviar dados para diversos tópicos que serão consumidos noutros serviços.
-            Relativamente aos microsserviços RealtimeProcessing e StatisticsProcessing, ambos consomem os dados que vêm
-            nos tópicos de kafka e fazem o seu processamento através de KafkaStreams. Por último, a plataforma
-            Planejane-gui tem por base a tecnologia ReactJS que está a ser disponibilizada num servidor nginx. O
-            diagrama de tecnologias pode ser verificado abaixo.
-            O deployment de todo o sistema tem por base a plataforma docker que permite a criação de imagens e de
-            containers que correm essas imagens. Assim, para cada um dos componentes foi criado um Dockerfile que
-            permite a criação da sua respetiva imagem que pode depois ser utilizada em containers. Para os componentes
-            que usam Springboot o dockerfile basicamente copia o jar da pasta target e coloca-o a correr. Para o
-            componente do frontend, o dockerfile cria uma imagem intermédia usando o node que permite obter uma imagem
-            muito mais pequena através que é possível correr através do nginx. É possível obter mais informação acerca
-            do deployment do sistema na parte de Manual, Developer ou Operations da documentação.</font>
-          </p>
           <img src="../assets/img/modeloTec.png" alt="Trulli" class="center">
         </div>
       </div>

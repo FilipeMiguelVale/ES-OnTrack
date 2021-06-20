@@ -48,14 +48,17 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a></li>
+          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a>
+          </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
           <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
               <span>Demo</span></a></li>
-          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i> <span>Milestones</span></a>
+          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+              <span>Milestones</span></a>
           </li>
-          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a></li>
+          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a>
+          </li>
         </ul>
       </nav>
 
@@ -107,12 +110,10 @@
         </p>
         <p style="padding-top: 20px"></p>
       </div>
-      <!--</section>-->
 
       <hr class="hr5">
 
       <!-- ======= Functionalities Section ======= -->
-      <!--<section id="testimonials" class="testimonials section-bg">-->
       <div class="container">
         <div class="section-title">
           <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Funcionalidades do
@@ -138,43 +139,33 @@
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F02</b></td>
-            <td style="text-align: justify;">Visualização em tempo real das paragens de autocarros da cidade do Porto.
-            </td>
-          </tr>
-          <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F03</b></td>
-            <td style="text-align: justify;">Definição de um alarme para um determinado autocarro.</td>
-          </tr>
-          <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F04</b></td>
             <td style="text-align: justify;">Verificação dos autocarros dentro de uma determinada área de localização.
             </td>
           </tr>
           <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F05</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F03</b></td>
             <td style="text-align: justify;">Filtragem de autocarros, em função de um conjunto de atributos a definir
               pelo utilizador.</td>
           </tr>
           <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F06</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F04</b></td>
             <td style="text-align: justify;">Visualização do histórico de um determinado autocarro.</td>
           </tr>
           <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F07</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F05</b></td>
             <td style="text-align: justify;">Obtenção de dados estatísticos sobre os autocarros.</td>
           </tr>
           <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F08</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>F06</b></td>
             <td style="text-align: justify;">Obtenção da localização do utilizador.</td>
           </tr>
         </table>
         <p style="padding-top: 20px"></p>
       </div>
-      <!--</section>-->
 
       <hr class="hr5">
 
-      <!--<section id="services" class="services">-->
+      <!-- ======= Interfaces Section ======= -->
       <div class="container">
         <div class="section-title">
           <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Interfaces de Software</b>
@@ -187,58 +178,57 @@
         <table class="center" data-aos="fade-right">
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Dataset</b></td>
-            <td style="text-align: justify;">A aplicação depende dos dados recolhidos por sensores nos autocarros do
-              Porto. Contudo, para efeitos de
-              simulação e teste foi usado um dataset
-              que contém previamente dados retirados desses sensores, como o ID do autocarro, as coordenadas, a
-              velocidade média, entre outros.</td>
+            <td style="text-align: justify;">
+              A aplicação depende dos dados recolhidos por sensores nos autocarros do Porto. Contudo, para efeitos de
+              simulação e teste foi usado um dataset que contém previamente dados retirados desses sensores, como o ID
+              do autocarro, as coordenadas, a velocidade média, entre outros.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Data Storage</b></td>
             <td style="text-align: justify;">Para o armazenamento de dados, a aplicação OnTrack faz uso de duas bases de
-              dados. Para armazenar as
-              informações de cada conta de utilizador é
-              usada uma base de dados MySQL. Relativamente ao armazenamento das informações dos autocarros, a aplicação
-              dispõe de uma base de dados InflluxBD
-              que facilita a recolha e tratamento dos dados.</td>
+              dados. Para armazenar as informações de cada conta de utilizador é usada uma base de dados MySQL.
+              Relativamente ao armazenamento das informações dos autocarros, a aplicação dispõe de uma base de dados
+              InflluxBD que facilita a recolha e tratamento dos dados.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Web Framework</b></td>
             <td style="text-align: justify;">
-              <font color="#ff0000"> A REST API, em Spring Boot v2.2.6, é responsável por realizar a comunicação entre a base de dados e a web
-              application. Ela fornece os dados no mesmo formato em que se encontram na base de dados, todos eles
-              embutidos numa estrutura JSON.</font>
+              A REST API, em Spring Boot v2.2.6, é responsável por realizar a comunicação entre a base de dados e a web
+              application.
             </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Data Stream</b></td>
             <td style="text-align: justify;">
-              <font color="#ff0000"> O Kafka utiliza o JSON para transportar string entre componentes.</font>
+              O Kafka permite o envio de eventos para dar informações sobre os autocarros.
             </td>
           </tr>
         </table>
-      <!-- Frontend -->
-      <div class="section-title">
-        <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Front-end</b>
-        </h4>
+        <!-- Frontend -->
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Front-end</b>
+          </h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Web Application</b></td>
+            <td style="text-align: justify;">
+              A interface de utilizador da aplicação OnTrack está construída em React.
+            </td>
+          </tr>
+        </table>
+        <p style="padding-top: 20px"></p>
       </div>
-      <table class="center" data-aos="fade-right">
-        <tr>
-          <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Web Application</b></td>
-          <td style="text-align: justify;">A interface de utilizador da aplicação OnTrack está construída em React.</td>
-        </tr>
-      </table>
-      <p style="padding-top: 20px"></p>
-
-      <!--</section>-->
 
       <hr class="hr5">
 
       <!-- ======= Requirements Section ======= -->
-      <!--<section id="testimonials" class="testimonials section-bg">-->
       <div class="container">
         <div class="section-title">
-          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Requisitos de Qualidade</b>
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Requisitos de
+              Qualidade</b>
           </h3>
         </div>
         <!-- Requisitos de usabilidade -->
@@ -249,94 +239,89 @@
         <table class="center" data-aos="fade-right">
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE01</b></td>
-            <td style="text-align: justify;">O sistema deverá permitir visualizar, de forma imediata, a localização e
-              trajetória dos autocarros.</td>
+            <td style="text-align: justify;">
+              O sistema deverá permitir visualizar, de forma imediata, a localização e trajetória dos autocarros.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE02</b></td>
-            <td style="text-align: justify;"><font color="#ff0000">O sistema deverá permitir visualizar, de forma imediata, a localização das
-              paragens dos autocarros.</font></td>
+            <td style="text-align: justify;">
+              A filtragem dos autocarros, por parte do utilizador, deverá ser possível em menos de 1 minuto.</td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE03</b></td>
-            <td style="text-align: justify;">A filtragem dos autocarros, por parte do utilizador, deverá ser possível em
-              menos de 1 minuto.</td>
+            <td style="text-align: justify;">
+              A seleção de um autocarro e apresentação dos seus dados, como por exemplo, a sua velocidade, deverá ser
+              possível em menos de 30 segundos.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE04</b></td>
-            <td style="text-align: justify;"><font color="#ff0000">A seleção de uma paragem deve ser possível em menos de 30 segundos.</font></td>
+            <td style="text-align: justify;">
+              Para todas as interações do utilizador com a aplicação, deverá ser possível reverter a funcionalidade ou
+              até mesmo cancelar.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE05</b></td>
-            <td style="text-align: justify;">A seleção de um autocarro e apresentação dos seus dados, como por exemplo,
-              a sua velocidade, deverá ser
-              possível em menos de 30 segundos.</td>
+            <td style="text-align: justify;">
+              A interface do sistema deverá ser simples, intuitiva e direta.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE06</b></td>
-            <td style="text-align: justify;">A seleção da área dos autocarros deverá ser possível em menos de 1 minuto.
+            <td style="text-align: justify;">
+              O início de sessão deverá ser possível em menos de 30 segundos.
             </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE07</b></td>
-            <td style="text-align: justify;">Para todas as interações do utilizador com a aplicação, deverá ser possível
-              reverter a funcionalidade ou
-              até mesmo cancelar.</td>
-          </tr>
-          <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE08</b></td>
-            <td style="text-align: justify;">A interface do sistema deverá ser simples, intuitiva e direta.</td>
-          </tr>
-          <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE09</b></td>
-            <td style="text-align: justify;">O início de sessão deverá ser possível em menos de 30 segundos.</td>
-          </tr>
-          <tr>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>USE10</b></td>
-            <td style="text-align: justify;">Os dados de estatística fornecidos, deverão ser possíveis em menos de 1
-              minuto.</td>
+            <td style="text-align: justify;">
+              Os dados de estatística fornecidos, deverão ser possíveis em menos de 1 minuto.
+            </td>
           </tr>
         </table>
 
         <!-- Requisitos de desempenho -->
         <div class="section-title">
-          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Requisitos de
-              Desempenho</b>
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Requisitos
+              de Desempenho</b>
           </h4>
         </div>
         <table class="center" data-aos="fade-right">
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER01</b></td>
-            <td style="text-align: justify;">A dashboard referente aos dados dos autocarros deverá carregar totalmente
-              em menos de 30 segundos.</td>
+            <td style="text-align: justify;">
+              A dashboard referente aos dados dos autocarros deverá carregar totalmente em menos de 30 segundos.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER02</b></td>
-            <td style="text-align: justify;">A atualização dos autocarros no mapa deverá ser realizada de 20 em 20
-              milissegundos.</td>
+            <td style="text-align: justify;">
+              A atualização dos autocarros no mapa deverá ser realizada de 1 em 1 segundos.
+            </td>
           </tr>
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>PER03</b></td>
-            <td style="text-align: justify;">A apresentação dos dados ao utilizador deverá ser realizada em menos de 20
-              segundos.</td>
+            <td style="text-align: justify;">
+              A apresentação dos dados ao utilizador deverá ser realizada em menos de 20 segundos.
+            </td>
           </tr>
         </table>
-      </div>
-      <!-- Requisitos de disponibilidade -->
-      <div class="section-title">
-        <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Requisitos
-            de
-            Disponibilidade</b></h4>
-      </div>
-      <table class="center" data-aos="fade-right">
-        <tr>
-          <td style="background-color:rgba(255, 217, 0, 0.856)"><b>AVL01</b></td>
-          <td style="text-align: justify;">Todas as funcionalidades disponibilizadas deverão estar disponíveis pelo
-            menos 90% do tempo.
-          </td>
-        </tr>
-      </table>
-      </br></br>
+
+        <!-- Requisitos de disponibilidade -->
+        <div class="section-title">
+          <h4 style="font-family: Lucida Handwriting; color: rgba(247, 202, 24, 1); padding-top: 50px;"><b>Requisitos
+              de Disponibilidade</b></h4>
+        </div>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>AVL01</b></td>
+            <td style="text-align: justify;">
+              Todas as funcionalidades disponibilizadas deverão estar disponíveis pelo menos 90% do tempo.
+            </td>
+          </tr>
+        </table>
       </div>
     </section>
   </main>

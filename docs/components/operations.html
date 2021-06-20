@@ -48,14 +48,17 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a></li>
+          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a>
+          </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
           <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
               <span>Demo</span></a></li>
-          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i> <span>Milestones</span></a>
+          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+              <span>Milestones</span></a>
           </li>
-          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a></li>
+          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a>
+          </li>
         </ul>
       </nav>
 
@@ -111,35 +114,39 @@
           </tr>
           <tr>
             <td><b>Build and Test</b></td>
-            <td style="text-align: justify;"> </td>
+            <td style="text-align: justify;">
+              Faz build dos mavens e executa todos os testes.
+            </td>
           </tr>
           <tr>
             <td><b>Test and Deploy</b></td>
-            <td style="text-align: justify;"> </td>
+            <td style="text-align: justify;">
+              Executa os testes e faz o deploy das imagens nas máquinas.
+            </td>
           </tr>
           <tr>
             <td><b>Deploy</b></td>
             <td style="text-align: justify;">
-              <font color="#ff0000">Executa apenas as etapas relacionadas à implantação do pipeline, como
-                implantar no Artifactoy, implantar o back-end, implantar a aplicação OnTrack e implantar no tempo de
-                execução. Permite implantar a aplicação enquanto se saltam todos os testes. </font>
+              Cria as imagens e dá deploy.
             </td>
           </tr>
           <tr>
             <td><b>Test</b></td>
             <td style="text-align: justify;">
-              <font color="#ff0000">Executa apenas as etapas relacionadas ao teste do pipeline, como teste, testes de
-                Cucumber. Permite executar os testes de integração rapidamente, sem implantar a aplicação.
-              </font>
+              Executa apenas as etapas relacionadas ao teste do pipeline.
             </td>
           </tr>
           <tr>
             <td><b>Build</b></td>
-            <td style="text-align: justify;"> </td>
+            <td style="text-align: justify;">
+              Apenas faz build dos mavens.
+            </td>
           </tr>
           <tr>
             <td><b>Fast Deploy</b></td>
-            <td style="text-align: justify;"> </td>
+            <td style="text-align: justify;">
+              Faz deploy das imagens para as VMs, sem criar imagens.
+            </td>
           </tr>
           <tr>
             <td><b>All</b></td>
@@ -167,121 +174,100 @@
         <table class="center" data-aos="fade-right">
           <tr>
             <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Stage</b></td>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Objetivo</b></td>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Tecnologias</b></td>
-            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Modos de execução</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Especificações</b></td>
           </tr>
           <tr>
             <td><b>Declarative: Checkout SCM</b></td>
             <td style="text-align: justify;">
+              Estágio gerado automaticamente pelo Jenkins, onde faz pool ao repositório.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Declarative: Tool install</b></td>
             <td style="text-align: justify;">
+              Estágio gerado automaticamente pelo Jenkins, onde se verifica se houve alterações no repositório ou no jenkinsfile.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Setup parameters</b></td>
             <td style="text-align: justify;">
+              Processa o que é suposto executar, dependendo dos parâmetros escolhidos da tabela acima.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Cloning repository</b></td>
             <td style="text-align: justify;">
+              Clona o repositório.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build Backend</b></td>
             <td style="text-align: justify;">
+              Faz build do maven respetivo ao backend.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build Producer</b></td>
             <td style="text-align: justify;">
+              Faz build do maven respetivo ao producer.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build Selenium</b></td>
             <td style="text-align: justify;">
+              Faz build do maven respetivo ao react.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Testing Backend</b></td>
             <td style="text-align: justify;">
+              Testa o backend.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Testing React</b></td>
             <td style="text-align: justify;">
+              Testa o react.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build Backend Image</b></td>
             <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao backend.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build React Image</b></td>
             <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao front-end.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Build Producer Image</b></td>
             <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao producer.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Publish images</b></td>
             <td style="text-align: justify;">
+              Publica as imagens na VM de registro.
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Deploy React</b></td>
             <td style="text-align: justify;">
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Deploy Backend</b></td>
             <td style="text-align: justify;">
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr>
             <td><b>Deploy Producer</b></td>
             <td style="text-align: justify;">
             </td>
-            <td></td>
-            <td></td>
           </tr>
         </table>
         <p style="padding-top: 20px"></p>
@@ -296,42 +282,25 @@
           </h3>
         </div>
         <p style="text-align: justify;" data-aos="fade-right">
-          <font color="#ff0000">
-            A nível de requisitos para o deploy do sistema o que é necessário é uma máquina com a plataforma docker
-            instalada, com um container a correr Kafka (porta 9092), um container a correr Zookeeper (porta 2181) e
-            outro container a correr React (porta 3001).
-            Assume-se ainda que nesta máquina o sistema de ELK com logstash está configurado através de um docker
-            compose para ser possível fazer
-            a configuração da monitorização. </font>
-        </p>
-        <p style="text-align: justify;" data-aos="fade-left">
-          <font color="#ff0000">
-            Relativamente aos requisitos de hardware da máquina, estes são bastante
-            básicos. A nível de RAM apenas será necessário cerca de 1GB, no entanto, a nível de memória em disco,
-            dependendo do tempo de execução do sistema, o espaço ocupado poderá escalar, dado o armazenamento de uma
-            grande quantidade de dados.</font>
+          A nível de requisitos para o deploy do sistema o que é necessário é uma máquina com a plataforma docker
+          instalada, com um container a correr Kafka producer (porta 9092), um container a correr Backend (porta 2181) e
+          outro container a correr React (porta 3001).
+          Assume-se ainda que nesta máquina o sistema de ELK com logstash está configurado através de um docker
+          compose para ser possível fazer
+          a configuração da monitorização.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
-          <font color="#ff0000">
-            Para fazer o deploy apenas é necessário fazer pull das imagens do docker registry, criar os containers
-            necessários para essas imagens e dar start aos mesmos, que no fundo, foi o que foi explicado na execução do
-            Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e porta do kafka para que o
-            logback appender envie a informação recolhida para um tópico lido pelo logstash. Por sua vez, nos diferentes
-            serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search,
-            onde podem depois ser analisados no kibana.</font>
+          Para fazer o deploy apenas é necessário fazer pull das imagens do docker registry, criar os containers
+          necessários para essas imagens e dar start aos mesmos, que no fundo, foi o que foi explicado na execução do
+          Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e porta do kafka para que o
+          logback appender envie a informação recolhida para um tópico lido pelo logstash. Por sua vez, nos diferentes
+          serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search,
+          onde podem depois ser analisados no kibana.
         </p>
         <p style="text-align: justify;" data-aos="fade-left">
-          <font color="#ff0000">
-            Neste sistema foi utilizado kubernetes e docker-compose, existindo então uma configuração out-of-the-box
-            para o utilizador final, para além de se poder utilizar o jenkins. </font>
-        </p>
-        <p style="text-align: justify;" data-aos="fade-right">
-          <font color="#ff0000">
-            Um dos aspetos menos positivos, foi a não utilização de environment variables, nem no projeto nem nos
-            Jenkinsfiles, logo caso fosse necessário estender o sistema, as portas e IPs tinham de se alterar nos
-            respetivos lugares. No entanto, como o sistema foi desenvolvido usando a plataforma Spring Boot, este aspeto
-            não é muito preocupante, na medida em que as mesmas podem ser alteradas, facilmente, no ficheiro
-            application.properties. </font>
+          Neste sistema foi utilizado <font color="#ff0000">kubernetes e</font> docker-compose, existindo então uma
+          configuração out-of-the-box
+          para o utilizador final, para além de se poder utilizar o jenkins.
         </p>
         <p style="padding-top: 20px"></p>
       </div>
@@ -345,19 +314,16 @@
           </h3>
         </div>
         <p style="text-align: justify;" data-aos="fade-right">
-          <font color="#ff0000">
-            A monitorização é feita usando uma stack ELK (Elasticsearch Logstash Kibana). </font>
+            A monitorização é feita usando uma stack ELK (Elasticsearch Logstash Kibana).
         </p>
         <p style="text-align: justify;" data-aos="fade-left">
-          <font color="#ff0000">
             Para fazer upload de nossos dados para o Elastic Search, utilizou-se um appender para logback. Este
-            appender é configurado no <i>logback.xml</i>, disponível no código-fonte.</font>
+            appender é configurado no <i>logback.xml</i>, disponível no código-fonte.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
-          <font color="#ff0000">
-            Esses dados podem então ser visualizados no Kibana, consultando o índice “esp30-logs”. Como todas as
+            Esses dados podem então ser visualizados no Kibana, consultando o índice <i></i>“esp30”</i>. Como todas as
             mensagens de log são carregadas lá, esses dados podem ser filtrados para mostrar todos os tipos de
-            informações sobre o sistema em execução.</font>
+            informações sobre o sistema em execução.
         </p>
         <p style="padding-top: 20px"></p>
       </div>
