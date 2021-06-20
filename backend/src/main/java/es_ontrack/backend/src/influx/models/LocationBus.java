@@ -8,25 +8,15 @@ import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
 
 @Measurement(name = "bus")
-public class BusData {
+public class LocationBus {
 
     @JsonProperty("time")
     @Column(name = "time")
     public Instant time;
-
-    @JsonProperty("id")
-    @Column(name = "id")
-    public String node_id;
-
-    @JsonProperty("speed")
-    @Column(name = "speed")
-    public double speed;
-
-    @JsonProperty("longitude")
-    @Column(name = "longitude")
-    public double lon;
-
     @JsonProperty("latitude")
     @Column(name = "latitude")
-    public double lat;
+    public double latitude;
+    @JsonProperty("longitude")
+    @Column(name = "longitude")
+    public double longitude;
 }

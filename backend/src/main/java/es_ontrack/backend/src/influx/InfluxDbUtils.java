@@ -2,7 +2,6 @@ package es_ontrack.backend.src.influx;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -10,13 +9,13 @@ import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
 import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
-import org.influxdb.annotation.TimeColumn;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
 import org.influxdb.impl.InfluxDBResultMapper;
 
-import es_ontrack.backend.src.influx.models.Bus_MeanSpeeds;
+import es_ontrack.backend.src.influx.models.BusData;
+import es_ontrack.backend.src.influx.models.LocationBus;
 import es_ontrack.backend.src.influx.models.Speeds;
 import es_ontrack.backend.src.models.Bus;
 import lombok.Data;
@@ -48,38 +47,23 @@ public class InfluxDbUtils {
     }
 
     public InfluxDB getInfluxDB() {
+        if (this.influxDB == null)
+            influxDbBuild();
         return this.influxDB;
     }
 
-    public List<Bus_MeanSpeeds> getMeanSpeedByBus() {
+    public List<BusData> getLocationMeanSpeedByBus(String time) {
 
-        List<Bus_Id> bus_ids = getBusIds();
+        String query = "select id, speed, latitude, longitude from bus";
 
-        List<String> ids = new ArrayList<String>();
+        if (!time.equals("ALL"))
+            query += " where time > now() - " + time;
 
-        bus_ids.iterator().forEachRemaining(bus -> ids.add(bus.id));
+        QueryResult result = performQuery(query);
 
-        List<Bus_MeanSpeeds> busSpeeds = new ArrayList<Bus_MeanSpeeds>();
+        InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
 
-        for (String id : ids) {
-            String query = "select mean(speed) as speed from bus where id='" + id + "'";
-
-            QueryResult result = performQuery(query);
-
-            InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
-
-            Double speed = resultMapper.toPOJO(result, Speeds.class).get(0).speed;
-
-            Bus_MeanSpeeds bus = new Bus_MeanSpeeds();
-            bus.id = id;
-            bus.speed = speed;
-
-            busSpeeds.add(bus);
-
-        }
-
-        return busSpeeds;
-
+        return resultMapper.toPOJO(result, BusData.class);
     }
 
     public List<Speeds> getSpeedsByHour() {
@@ -113,6 +97,19 @@ public class InfluxDbUtils {
 
         return resultMapper.toPOJO(result, Bus_Id.class);
 
+    }
+
+    public List<LocationBus> getLocationBus(String id, String time) {
+        String query = "select latitude,longitude from bus where id='" + id + "'";
+
+        if (!time.equals("ALL"))
+            query += " and time > now() - " + time;
+
+        QueryResult result = performQuery(query);
+
+        InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
+
+        return resultMapper.toPOJO(result, LocationBus.class);
     }
 
     private QueryResult performQuery(String query) {

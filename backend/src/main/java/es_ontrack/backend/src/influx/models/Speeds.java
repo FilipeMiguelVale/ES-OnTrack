@@ -1,13 +1,11 @@
 package es_ontrack.backend.src.influx.models;
 
 import java.time.Instant;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
-import org.influxdb.annotation.TimeColumn;
 
 @Measurement(name = "bus")
 public class Speeds {
