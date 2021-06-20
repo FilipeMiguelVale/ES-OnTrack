@@ -12,15 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es_ontrack.backend.src.models.Bus;
+import lombok.extern.log4j.Log4j2;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController
+@Log4j2
 @RequestMapping("/test")
 public class ClientController {
     @Autowired
     private KafkaCons consumer;
-
+    
+    private static final Logger LOG = Logger.getLogger(ClientController.class.getName());
+    
     @RequestMapping("/test")
     public String test(){
+
         return "test";
     }
 
@@ -31,6 +39,7 @@ public class ClientController {
 
     @RequestMapping("/data")
     public HashMap<String, Bus> getData(){
+    	LOG.log(Level.INFO, consumer.getBuses().toString());
         return consumer.getBuses();
     }
 }
