@@ -87,23 +87,23 @@ class Maps extends React.Component {
 
   render() 
   {
-    // if (this.props.center)
-    //   return(
-    //     <MapWrapper_details
-    //     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4"
-    //     loadingElement={<div style={{ height: `100%` }} />}
-    //     center = {this.props.center}
-    //     zoom = {this.props.zoom}
-    //     markers = {this.props.markers}
-    //     containerElement={
-    //         <div
-    //             className="map-canvas"
-    //             id="map-canvas"
-    //         />
-    //     }
-    //     mapElement={this.props.mapElement}
-    // />
-    // )
+    if (this.props.center)
+      return(
+        <MapWrapper_details
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4"
+        loadingElement={<div style={{ height: `100%` }} />}
+        center = {this.props.center}
+        zoom = {this.props.zoom}
+        markers = {this.props.markers}
+        containerElement={
+            <div
+                className="map-canvas"
+                id="map-canvas"
+            />
+        }
+        mapElement={this.props.mapElement}
+    />
+    )
     return (
     <MapWrapper
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4"
