@@ -78,18 +78,16 @@ class AccidentDetails extends React.Component {
       showVideo: {},
       video_total: 0,
       photos_total: 0,
-      accident_data: {
-        car: [],
-        location: {
-          address: " ",
-          coords: { lat: 40, lng: 30 },
-        },
-        damage: 0.0,
-        date: " ",
-        n_cars_involved: 0,
-        n_people_involved: 0,
-        n_people_injured: 0,
-      },
+      data: {
+          id: '',
+          location:
+          {
+            coords: { lat: '0', lng: '0' }
+          },
+          time: '',
+          speed: '',
+          address: '',
+     },
       dropDownValue: 0,
       dropDownOpen: false,
     };
@@ -126,72 +124,32 @@ class AccidentDetails extends React.Component {
 
 
   get_data = async (id) => {
+
     let response = await fetch(
-      `/markers/${id}`);
-    let ress = await response.json();
-
-
-    response = await fetch(
-      `/Buses/${id}`);
+      `/statistics/bus?id=${id}`);
     let result = await response.json();
     this.setState(prevState => (
       {
-        accident_data: {
-          car: result['cars'],
+        data: {
+          id: result['id'],
           location:
           {
-            //address: result['location']['address'],
-            //coords: {lat: parseFloat(result['location']['lat'])+parseFloat(ress["lat"]),lng: result['location']['lng']}
             coords: { lat: result['latitude'], lng: result['longitude'] }
           },
-          damage: result['damage'],
-          //date: fix_date(result['date']),
-          n_cars_involved: result['n_cars_involved'],
-          n_people_involved: result['n_people'],
-          n_people_injured: parseInt(result['n_people_injured']),
-          status: result['status']
-        },
-        video_total: parseInt(result['video_total']),
-        dropDownValue: this.init_text_dropdown(parseInt(result['status']))
+          time: result['time'],
+          speed: result['speed'],
+          address: result['location']
+     }
       }
     ));
-    console.log(result['latitude'])
-    const resp = await fetch(
-      `/Nmedia/${id}/photos`);
-    const res = await resp.json();
-    this.numImg = parseInt(res)
-    const media = []
-    if (this.state.video_total > 0) {
-      for (let i = 1; i < this.state.video_total + 1; i++) {
-        media.push({
-          thumbnail: `/media/${id}/video/${i}T.jpg`,
-          original: `/media/${id}/video/${i}T.jpg`,
-          source: `/media/${id}/video/${i}.mp4`,
-          renderItem: this._renderVideo.bind(this)
-        })
-      }
-    } else {
-      media.push({
-        thumbnail: `/media/novideo.png`,
-        original: `/media/novideo.png`
-      })
-    }
-    for (let i = 0; i < this.numImg; i++) {
-      media.push({
-        thumbnail: `/media/${id}/photos/${i}.jpeg`,
-        original: `/media/${id}/photos/${i}.jpeg`
-      })
-    }
+    console.log(this.state.data)
 
-    this.setState(prevState => (
-      this.images = media
-    ));
   }
 
   componentDidMount() {
     let id = this.props.match.params['id']
     this.get_data(id)
-    this.timer = setInterval(() => this.get_data(id), 1000)
+    this.timer = setInterval(() => this.get_data(id), 10000)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -476,13 +434,13 @@ class AccidentDetails extends React.Component {
                     <Maps
                       markers={[{
                         id: this.props.match.params['id'],
-                        lat: this.state.accident_data.location.coords.lat,
-                        lng: this.state.accident_data.location.coords.lng,
-                        status: this.state.accident_data.status
+                        lat: this.state.data.location.coords.lat,
+                        lng: this.state.data.location.coords.lng,
+
                       }]}
                       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4aWR3SBGaa1oB0CuDf2vptnJfSMSguZU"
                       loadingElement={<div style={{ height: `100%` }} />}
-                      center={this.state.accident_data.location.coords}
+                      center={this.state.data.location.coords}
                       zoom={17}
 
                       containerElement={

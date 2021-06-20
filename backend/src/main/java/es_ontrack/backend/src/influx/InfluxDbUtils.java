@@ -111,6 +111,16 @@ public class InfluxDbUtils {
 
         return resultMapper.toPOJO(result, LocationBus.class);
     }
+    
+    public BusData getBus(String id) {
+        String query = "select id, speed, latitude, longitude,location from bus where id='" + id + "'";
+
+        QueryResult result = performQuery(query);
+
+        InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
+
+        return resultMapper.toPOJO(result, BusData.class).get(0);
+    }
 
     private QueryResult performQuery(String query) {
         Query queryObj = new Query(query, this.database);
