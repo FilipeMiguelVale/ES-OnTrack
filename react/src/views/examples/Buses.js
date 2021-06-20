@@ -65,7 +65,7 @@ class Buses extends React.Component {
       num_to_show:15,
       num_accidents:0,
       dropDown1Value: "Date/Hour",
-      dropdownIndex:"1h",
+      dropdownIndex:"1m",
       dropdownIndex2:"All",
       dropdownIndex3:"Descending",
       dropDown1Open: false,
@@ -204,6 +204,11 @@ class Buses extends React.Component {
         </th>
         <th scope="row" width="5%">
           <span className="mb-0 text-sm">
+            {value["location"]}
+          </span>
+        </th>
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
             {value["latitude"]}
           </span>
         </th>
@@ -308,7 +313,7 @@ class Buses extends React.Component {
 
   changeValueDrop1(e,id) {
 
-      const a = ["1h","2h","4h","1d","5d","2w"]
+      const a = ["1m","5m","30m","1h","2h","4h","1d","5d"]
       this.state.dropDown1Value= e.currentTarget.textContent
       this.state.dropdownIndex= `${a[id]}`
       this.getData(this.state.curent_page)
@@ -359,12 +364,15 @@ class Buses extends React.Component {
                             {this.state.dropDown1Value}
                           </DropdownToggle>
                           <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>2h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>4h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1d</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>5d</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>2w</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>5m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>30m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>2h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>4h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,7)}>1d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,8)}>5d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,9)}>2w</DropdownItem>
                           </DropdownMenu>
                         </ButtonDropdown>
                       </div>
@@ -406,12 +414,15 @@ class Buses extends React.Component {
                             {this.state.dropDown1Value}
                           </DropdownToggle>
                           <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>2h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>4h</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1d</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>5d</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>2w</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>5m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>30m</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>2h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>4h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,7)}>1d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,8)}>5d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,9)}>2w</DropdownItem>
                           </DropdownMenu>
                         </ButtonDropdown>
 
@@ -438,7 +449,15 @@ class Buses extends React.Component {
                             <i className="fas fa-calendar-alt" />
                           </div>
                           <div >
-                            <span className="ml-1">Date/Hour</span>
+                            <span className="ml-1">Location</span>
+                          </div>
+                        </th>
+                        <th scope="col " style={{ textAlign: "center" }}>
+                          <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
+                            <i className="fas fa-calendar-alt" />
+                          </div>
+                          <div >
+                            <span className="ml-1">Latitude</span>
                           </div>
                         </th>
                         <th scope="col" style={{ textAlign: "center" }}>
@@ -446,7 +465,7 @@ class Buses extends React.Component {
                             <i className="fas fa-map-marked-alt" />
                           </div>
                           <div >
-                            <span className="ml-1">Location</span>
+                            <span className="ml-1">Longitude</span>
                           </div>
                         </th>
                         <th scope="col" style={{ textAlign: "center" }}>

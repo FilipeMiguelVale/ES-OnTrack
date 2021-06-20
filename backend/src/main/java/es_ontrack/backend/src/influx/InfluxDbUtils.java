@@ -54,7 +54,7 @@ public class InfluxDbUtils {
 
     public List<BusData> getLocationMeanSpeedByBus(String time) {
 
-        String query = "select id, speed, latitude, longitude from bus";
+        String query = "select id, speed, latitude, longitude,location from bus";
 
         if (!time.equals("ALL"))
             query += " where time > now() - " + time;

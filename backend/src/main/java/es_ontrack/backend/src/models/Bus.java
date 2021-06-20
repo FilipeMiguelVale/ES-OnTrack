@@ -22,6 +22,8 @@ public class Bus {
 	private double speed;
 	@Column(name = "time")
 	private Date ts;
+	@Column(name = "location")
+	private String location;
 
 	public Bus() {
 	}
@@ -42,6 +44,14 @@ public class Bus {
 
 	public void setNode_id(String node_id) {
 		this.node_id = node_id;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public int getLocation_id() {

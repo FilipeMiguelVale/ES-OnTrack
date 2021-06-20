@@ -29,4 +29,10 @@ public class BusData {
     @JsonProperty("latitude")
     @Column(name = "latitude")
     public double lat;
+    
+    @JsonProperty("location")
+    @Column(name = "location")
+    public String location;
+
+
 }

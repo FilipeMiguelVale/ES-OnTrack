@@ -1,6 +1,8 @@
 package es_ontrack.backend.src.kafka;
 
+
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.LatLng;
 
 import es_ontrack.backend.src.influx.InfluxDbUtils;
 import es_ontrack.backend.src.models.Bus;
@@ -46,6 +52,17 @@ public class KafkaCons {
         Gson g = new Gson();
         try {
             Bus b = g.fromJson(message, Bus.class);
+            
+            GeoApiContext context = new GeoApiContext.Builder()
+            	    .apiKey("AIzaSyDxoYS3cRSwGK_fT5KMzi_9PAUmZocg1A4")
+            	    .build();
+            LatLng location = new LatLng(b.getLat(), b.getLon());
+        	GeocodingResult[] results =  GeocodingApi.newRequest(context).latlng(location).await();
+        	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        	//System.out.println(gson.toJson(results[0].addressComponents));
+            //System.out.println("\n\n");
+            System.out.println(gson.toJson(results[0].formattedAddress));
+            b.setLocation(gson.toJson(results[0].formattedAddress));
             buses.put(b.getNode_id(), b);
             influxdbUtils.write(b);
         } catch (Exception e) {
