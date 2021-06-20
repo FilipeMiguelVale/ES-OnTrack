@@ -204,6 +204,11 @@ class Buses extends React.Component {
         </th>
         <th scope="row" width="5%">
           <span className="mb-0 text-sm">
+            {value["time"]}
+          </span>
+        </th>
+        <th scope="row" width="5%">
+          <span className="mb-0 text-sm">
             {value["location"]}
           </span>
         </th>
@@ -449,12 +454,20 @@ class Buses extends React.Component {
                             <i className="fas fa-calendar-alt" />
                           </div>
                           <div >
-                            <span className="ml-1">Location</span>
+                            <span className="ml-1">Date/Hour</span>
                           </div>
                         </th>
                         <th scope="col " style={{ textAlign: "center" }}>
                           <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
-                            <i className="fas fa-calendar-alt" />
+                            <i className="fas fa-map-marker" />
+                          </div>
+                          <div >
+                            <span className="ml-1">Address</span>
+                          </div>
+                        </th>
+                        <th scope="col " style={{ textAlign: "center" }}>
+                          <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
+                            <i className="fas fa-map-marked-alt" />
                           </div>
                           <div >
                             <span className="ml-1">Latitude</span>
@@ -474,6 +487,14 @@ class Buses extends React.Component {
                           </div>
                           <div >
                             <span className="ml-1">Velocity</span>
+                          </div>
+                        </th>
+                        <th scope="col" style={{ textAlign: "center" }}>
+                          <div className="icon icon-shape bg-transparent text-white rounded-circle" >
+                            <i className="fas fa-info-circle" />
+                          </div>
+                          <div >
+                            <span className="ml-1">More</span>
                           </div>
                         </th>
                       </tr>
