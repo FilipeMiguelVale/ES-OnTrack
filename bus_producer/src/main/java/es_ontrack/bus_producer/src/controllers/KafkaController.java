@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.opencsv.CSVReader;
 
 @RestController
 @RequestMapping(value = "/kafka")
 @EnableScheduling
+@Log4j2
 public class KafkaController {
 
     private final KafkaProd producer;
@@ -30,6 +35,8 @@ public class KafkaController {
     // SimpleDateFormat("HH:mm:ss");
     // private static final Logger log =
     // LoggerFactory.getLogger(CoinController.class);
+    
+    private static final Logger LOG = Logger.getLogger(KafkaController.class.getName());
 
     @Autowired
     public KafkaController(KafkaProd producer) throws FileNotFoundException, IOException {
@@ -58,6 +65,7 @@ public class KafkaController {
                 + records.get(i).get(5) + "', 'speed': " + records.get(i).get(6) + "}";
 
         this.producer.send("esp23_buses", message);
+        LOG.log(Level.INFO, message);
         // log.info("Publishing data to topic data: "+message);
         System.out.println(message);
         // return "Published message: "+message ;
