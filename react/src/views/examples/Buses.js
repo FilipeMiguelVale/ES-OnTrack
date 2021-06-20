@@ -42,7 +42,7 @@ function fix_date(st) {
   return [year,time];
 }
 
-class Accidents extends React.Component {
+class Buses extends React.Component {
 
   constructor(props) {
     super(props);
@@ -80,7 +80,7 @@ class Accidents extends React.Component {
   }
 
   redirect_to_details = (index) => {
-    return <Redirect to={`/admin/accident_details/${index}`}/>
+    return <Redirect to={`/admin/Bus_details/${index}`}/>
   }
 
   getData = async (id) => {
@@ -361,7 +361,7 @@ class Accidents extends React.Component {
                   <Row >
                     <Col>
                       <div className="row ml">
-                        <h1 className="text-white mb-0" style={{ paddingLeft: 20}} >Accidents</h1>
+                        <h1 className="text-white mb-0" style={{ paddingLeft: 20}} >Buses</h1>
                       </div>
                     </Col>
                     <Col >
@@ -428,7 +428,7 @@ class Accidents extends React.Component {
                   <Row >
                     <Col>
                       <div className="row ml">
-                        <h1 className="text-white mb-0" style={{ paddingLeft: 20}} >Accidents</h1>
+                        <h1 className="text-white mb-0" style={{ paddingLeft: 20}} >Buses</h1>
                       </div>
                     </Col>
                     <Col >
@@ -480,76 +480,42 @@ class Accidents extends React.Component {
                 >
                   <thead className="thead-dark">
                     <tr >
-                      <th scope="col " style={{textAlign:"center"}}>
-                       <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
-                         <i className="fas fa-calendar-alt"/>
-                       </div>
-                      <div >
-                         <span className="ml-1">Date/Hour</span>
-                      </div>
-                      </th>
-                      <th scope="col"  style={{textAlign:"center"}}>
-                       <div  className="icon icon-shape bg-transparent text-white rounded-circle" >
-                         <i  className="fas fa-map-marked-alt"/>
-                       </div>
-                       <div >
-                         <span className="ml-1">Location</span>
-                       </div>
-                      </th>
-                      <th scope="col"  style={{textAlign:"center"}}>
-                       <div  className="icon icon-shape bg-transparent text-white rounded-circle" >
-                         <i  className="fas fa-building"/>
-                       </div>
-                       <div >
-                         <span className="ml-1">City</span>
-                       </div>
-                      </th>
-                      <th scope="col" style={{textAlign:"center"}}>
-                       <div className="icon icon-shape bg-transparent text-white rounded-circle">
-                         <i className="fas fa-car"/>
-                       </div>
-                       <div>
-                         <span className="ml-1">Nº cars</span>
-                       </div>
-                      </th>
-                      <th scope="col" style={{textAlign:"center"}}>
-                       <div className="icon icon-shape bg-transparent text-white rounded-circle">
-                         <i className="fas fa-users"/>
-                       </div>
-                      <div>
-                         <span className="ml-1">Nº people</span>
-                       </div>
-                      </th>
-                      <th scope="col" style={{textAlign:"center"}}>
-                        <div className="icon icon-shape bg-transparent text-white rounded-circle">
-                          <i className="fas fa-user-injured"/>
-                       </div>
-                      <div>
-                       <span className="ml-1">Nºinjured</span>
-                      </div>
-                      </th>
-                      <th scope="col"style={{textAlign:"center"}}>
-                       <div className="icon icon-shape bg-transparent text-white rounded-circle">
-                         <i className="fas fa-exclamation-triangle"/>
-                       </div>
-                      <div>
-                       <span className="ml-1">Severity</span>
-                      </div>
-                      </th>
-                      <th scope="col"style={{textAlign:"center"}}>
-                       <div className="icon icon-shape bg-transparent text-white rounded-circle">
-                         <i className="fas fa-flag"/>
-                       </div>
-                      <div>
-                       <span className="ml-1">Status</span>
-                      </div>
-                      </th>
-                      <th scope="col" style={{textAlign:"center"}}   />
-
-                    </tr>
-                  </thead>
+                        <th scope="col " style={{ textAlign: "center" }}>
+                          <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
+                            <i className="fas fa-bus" />
+                          </div>
+                          <div >
+                            <span className="ml-1">ID</span>
+                          </div>
+                        </th>
+                        <th scope="col " style={{ textAlign: "center" }}>
+                          <div align="center" className="icon icon-shape bg-transparent text-white rounded-circle">
+                            <i className="fas fa-calendar-alt" />
+                          </div>
+                          <div >
+                            <span className="ml-1">Date/Hour</span>
+                          </div>
+                        </th>
+                        <th scope="col" style={{ textAlign: "center" }}>
+                          <div className="icon icon-shape bg-transparent text-white rounded-circle" >
+                            <i className="fas fa-map-marked-alt" />
+                          </div>
+                          <div >
+                            <span className="ml-1">Location</span>
+                          </div>
+                        </th>
+                        <th scope="col" style={{ textAlign: "center" }}>
+                          <div className="icon icon-shape bg-transparent text-white rounded-circle" >
+                            <i className="fas fa-tachometer-alt" />
+                          </div>
+                          <div >
+                            <span className="ml-1">Velocity</span>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
                   <tbody>
-                    {this.state["table_data"].map(this.renderArray)}
+                    {/*{this.state["table_data"].map(this.renderArray)}*/}
                   </tbody>
                 </Table>
                 <CardHeader className="bg-transparent border-0">
@@ -568,4 +534,4 @@ class Accidents extends React.Component {
   }}
 }
 
-export default Accidents;
+export default Buses;

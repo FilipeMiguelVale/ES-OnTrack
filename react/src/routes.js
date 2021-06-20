@@ -20,7 +20,7 @@ import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps_Page.js";
 import Register from "views/examples/Register.js";
 import Login from "views/Login.js";
-import Accidents from "views/examples/Accidents.js";
+import Buses from "views/examples/Buses.js";
 import AccidentDetails from "views/examples/AccidentDetails";
 import Edit_profile from "views/examples/Edit_profile";
 import Users_table from "views/examples/Users_table";
@@ -55,10 +55,10 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/accidents",
-    name: "Accidents",
-    icon: "ni ni-ambulance text-purple",
-    component: Accidents,
+    path: "/Buses",
+    name: "Buses",
+    icon: "ni ni-bus-front-12 text-purple",
+    component: Buses,
     layout: "/admin"
   },
   {

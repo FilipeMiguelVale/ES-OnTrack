@@ -91,8 +91,8 @@ class Sidebar extends React.Component {
     return routes.map((prop, key) => {
       if (prop['path'] == "/edit_profile" ||prop['path'] == "/register" ||prop['path'] == "/user-profile" || prop['path'] == "/accident_details/:id" || prop['path'] == "/login")
         return
-      if (this.state.role != 0 && prop['path'] === '/users_table' || prop['path'] == "/accidents")
-        return
+      // if (this.state.role != 0 && prop['path'] === '/users_table' || prop['path'] == "/accidents")
+      //   return
       return (
         <NavItem key={key}>
           <NavLink
