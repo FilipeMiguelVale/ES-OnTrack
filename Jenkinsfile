@@ -60,37 +60,8 @@ pipeline {
 			}
 		}
 
-        stage ('Build Selenium') {
-			when {
-                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST') || (PARAMETER == 'BUILD')}
-            }
-            steps {
-			    dir("selenium_dev"){
-				    sh 'mvn clean install -DskipTests'
-			    }
-			}
-		}
-		
-		stage ('Testing Backend') {
-			when {
-                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST')|| (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'TEST')}
-            }		    
-            steps{
-			    dir("backend"){
-				    sh 'mvn test -Dtest=SrcApplicationTests'
-			    }
-		    }
-		}
-		stage ('Testing React') {
-			when {
-                expression { (PARAMETER == 'ALL') ||(PARAMETER == 'BUILD AND TEST')|| (PARAMETER == 'TEST AND DEPLOY') || (PARAMETER == 'TEST')}
-            }
-		    steps{
-			    dir("backend"){
-				    sh 'mvn test -Dtest=ReactTest'
-			    }
-		    }
-		}
+
+
 		/*
 		stage ('Deploying Artifacts') {
 			when {
@@ -255,17 +226,7 @@ pipeline {
             }
         }
 
-        
-        stage ('Selenium Testing') {
-			when {
-                expression { (PARAMETER == 'DEPLOY AND TEST') || (PARAMETER == 'TEST')}
-            }
-		    steps{
-			    dir("selenium_dev"){
-				    sh 'mvn test'
-			    }
-		    }
-		}
+
 
         */
 
