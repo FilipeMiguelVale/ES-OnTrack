@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
 import java.util.concurrent.TimeUnit;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CucumberSteps extends CucumberIntegrationTest {
 
@@ -25,18 +25,27 @@ public class CucumberSteps extends CucumberIntegrationTest {
         System.out.println("CONNECTION ESTABLISHED");
     }
 
-    @Given("Client is connected to MySQLDatabase")
+    @Given("Admin is connected to MySQL Database")
     public void ASSERT_CLIENT_CONNECTED() {
         System.out.println("CLIENT ALREADY CONNECTED TO MYSQL");
     }
 
-    @When("Client queries database for user with id=test")
-    public void MYSQL_DATABASE_QUERY()
+    @When("Admin queries database for user with id={string}")
+    public void MYSQL_DATABASE_QUERY(String user_id)
     {
         System.out.println("QUERY MADE");
     }
 
-    @Then("Client receives a non empty list of users")
+    @When("Admin queries database for user with id={string} and password={string}")
+    public void CHECK_FOR_USERS_MYSQL(String user, String password)
+    {   
+        System.out.println("USER_ID: " + user);
+        System.out.println("USER_PASSWORD " + password);
+        System.out.println("Unimplemented Test");
+    }
+
+
+    @Then("Admin receives a non empty list of users")
     public void RECEIVE_DATA_FROM_MYSQL()
     {
         System.out.println("NON EMPTY LIST OF USERS");
