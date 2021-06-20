@@ -58,7 +58,7 @@ public class KafkaController {
         }
         for (int j = 0; j < records.get(i).size(); j++)
             if (records.get(i).get(j).isEmpty())
-                records.get(i).set(j, "null");
+                records.get(i).set(j, "0");
 
         String message = "{'node_id':'" + records.get(i).get(1) + "','location_id':'" + records.get(i).get(2)
                 + "','head': '" + records.get(i).get(3) + "','lon':'" + records.get(i).get(4) + "','lat':'"

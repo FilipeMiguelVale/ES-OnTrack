@@ -62,10 +62,10 @@ class Buses extends React.Component {
       table_data : [],
       table_buttons:[],
       curent_page:1,
+      num_to_show:15,
       num_accidents:0,
-      num_to_show:10,
       dropDown1Value: "Date/Hour",
-      dropdownIndex:"between",
+      dropdownIndex:"1h",
       dropdownIndex2:"All",
       dropdownIndex3:"Descending",
       dropDown1Open: false,
@@ -85,28 +85,30 @@ class Buses extends React.Component {
 
   getData = async (id) => {
       try {
-           const response = await fetch(
-              `/num_accidents?quantity=${this.state.dropdownIndex2}`
-          );
-
-          const result = await response.json();
-          this.setState(
-              prevState => (
-                  {
-                      num_accidents: result
-                  }
-              )
-          );
+          //  const response = await fetch(
+          //     `/num_accidents?quantity=${this.state.dropdownIndex2}`
+          // );
+          //
+          // const result = await response.json();
+          // this.setState(
+          //     prevState => (
+          //         {
+          //             num_accidents: result
+          //         }
+          //     )
+          // );
           const response1 = await fetch(
-              `/range_accidents?id=${id}&filter=${this.state.dropdownIndex}&quantity=${this.state.dropdownIndex2}&order=${this.state.dropdownIndex3}`
+              //`/range_accidents?id=${id}&filter=${this.state.dropdownIndex}&quantity=${this.state.dropdownIndex2}&order=${this.state.dropdownIndex3}`
+              `/statistics/mean_speed_location_by_bus?time=${this.state.dropdownIndex}`
           );
 
           const result1 = await response1.json();
+          console.log(result1)
           if(result1.length===0)
               this.setState(
              prevState => (
                  {
-                     error: "No accidents to Show"
+                     error: "No Buses to Show"
                  }
              )
          );
@@ -138,7 +140,7 @@ class Buses extends React.Component {
          this.setState(
              prevState => (
                  {
-                     error: "No accidents to Show"
+                     error: "No Buses to Show"
                  }
              )
          );
@@ -195,48 +197,30 @@ class Buses extends React.Component {
   renderArray = (value,index) => {
     return(
       <tr key={index} >
-        <th scope="row">
+        <th scope="row" width="5%" style={{textAlign:"center"}}>
           <span className="mb-0 text-sm">
-            {fix_date(value["date"])[0]}<br/>{fix_date(value["date"])[1]}
+            {value["id"]}<br/>
           </span>
         </th>
         <th scope="row" width="5%">
           <span className="mb-0 text-sm">
-            {value["location"]["address"].substring(0,45)}
+            {value["latitude"]}
           </span>
         </th>
         <th scope="row" width="5%">
           <span className="mb-0 text-sm">
-            {value["city"]}
-          </span>
-        </th>
-        <th scope = "row" style={{textAlign:"center"}}>
-          <span className="mb-0 text-sm">
-            {value["n_cars_involved"]}
-          </span>
-        </th>
-        <th scope = "row" style={{textAlign:"center"}}>
-          <span className="mb-0 text-sm">
-            {value["n_people"]}
-          </span>
-        </th>
-        <th scope = "row" style={{textAlign:"center"}}>
-          <span className="mb-0 text-sm">
-            {value["n_people_injured"]}
+            {value["longitude"]}
           </span>
         </th>
        <th scope = "row" style={{textAlign:"center"}}>
-           <span className="mr-2">{value["damage"]}</span>
+           <span className="mr-2">{value["speed"]}</span>
            <div>
                <Progress
                   max="100"
-                  value={value["damage"]}
-                  barClassName={this.getBarColor(value["damage"])}
+                  value={value["speed"]}
+                  barClassName={this.getBarColor(value["speed"])}
                 />
             </div>
-        </th>
-        <th scope = "row" style={{textAlign:"center"}}>
-            {this.setStatus(value["status"])}
         </th>
         <th scope = "row" style={{textAlign:"center"}}>
             <Button
@@ -262,20 +246,20 @@ class Buses extends React.Component {
 
   renderButtons(){
 
-     if(this.state.num_accidents > this.state.num_to_show){
+     if(this.state.table_data.length > this.state.num_to_show){
       const Buttons = []
       if(this.state.curent_page >1)
         Buttons.push(<li className="page-item"><a className="page-link" onClick={(e)=>this.handleClick(e,this.state.curent_page-1)}><i
                        className="fas fa-angle-left"></i></a></li>)
-      for (let i = 1; i < Math.ceil(this.state.num_accidents/this.state.num_to_show)+1; i++) {
-        if(i===this.state.curent_page){
+      for (let i = 1; i < Math.ceil(this.state.table_data.length/this.state.num_to_show)+1; i++) {
+        if(i==this.state.curent_page){
           Buttons.push(<li className="page-item active"><a className="page-link" onClick={(e)=>this.handleClick(e,`${i}`)}>{i}</a></li>)
         }
         else{
           Buttons.push(<li className="page-item"><a className="page-link" onClick={(e)=>this.handleClick(e,`${i}`)}>{i}</a></li>)
         }
       }
-      if(this.state.curent_page < Math.ceil(this.state.num_accidents/this.state.num_to_show) )
+      if(this.state.curent_page < Math.ceil(this.state.table_data.length/this.state.num_to_show) )
         Buttons.push(<li className="page-item"><a className="page-link" onClick={(e)=>this.handleClick(e,parseInt(this.state.curent_page)+1)}><i
                        className="fas fa-angle-right"></i></a></li>)
 
@@ -324,7 +308,7 @@ class Buses extends React.Component {
 
   changeValueDrop1(e,id) {
 
-      const a = ["","between","cars","people","injured","severity","status"]
+      const a = ["1h","2h","4h","1d","5d","2w"]
       this.state.dropDown1Value= e.currentTarget.textContent
       this.state.dropdownIndex= `${a[id]}`
       this.getData(this.state.curent_page)
@@ -375,32 +359,12 @@ class Buses extends React.Component {
                             {this.state.dropDown1Value}
                           </DropdownToggle>
                           <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>Date/Hour</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>Nº cars</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>Nº people</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>Nº injured</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>Severity</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>Status</DropdownItem>
-                          </DropdownMenu>
-                        </ButtonDropdown>
-                        <ButtonDropdown className={"mr-2 ml-2"} isOpen={this.state.dropDown2Open} toggle={this.toggleDrop2}>
-                          <DropdownToggle caret>
-                            {this.state.dropDown2Value}
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Today")}>Today</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Yesterday")}>Yesterday</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Last Month")}>Last Month</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"All")}>All</DropdownItem>
-                          </DropdownMenu>
-                        </ButtonDropdown>
-                        <ButtonDropdown isOpen={this.state.dropDown3Open} toggle={this.toggleDrop3}>
-                          <DropdownToggle caret>
-                            {this.state.dropDown3Value}
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop3(e,"Ascending")}>Ascending</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop3(e,"Descending")}>Descending</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>2h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>4h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>5d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>2w</DropdownItem>
                           </DropdownMenu>
                         </ButtonDropdown>
                       </div>
@@ -442,34 +406,15 @@ class Buses extends React.Component {
                             {this.state.dropDown1Value}
                           </DropdownToggle>
                           <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>Date/Hour</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>Nº cars</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>Nº people</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>Nº injured</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>Severity</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>Status</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,1)}>1h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,2)}>2h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,3)}>4h</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,4)}>1d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,5)}>5d</DropdownItem>
+                            <DropdownItem onClick={(e)=>this.changeValueDrop1(e,6)}>2w</DropdownItem>
                           </DropdownMenu>
                         </ButtonDropdown>
-                        <ButtonDropdown className={"mr-2 ml-2"} isOpen={this.state.dropDown2Open} toggle={this.toggleDrop2}>
-                          <DropdownToggle caret>
-                            {this.state.dropDown2Value}
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Today")}>Today</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Yesterday")}>Yesterday</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"Last Month")}>Last Month</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop2(e,"All")}>All</DropdownItem>
-                          </DropdownMenu>
-                        </ButtonDropdown>
-                        <ButtonDropdown isOpen={this.state.dropDown3Open} toggle={this.toggleDrop3}>
-                          <DropdownToggle caret>
-                            {this.state.dropDown3Value}
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop3(e,"Ascending")}>Ascending</DropdownItem>
-                            <DropdownItem onClick={(e)=>this.changeValueDrop3(e,"Descending")}>Descending</DropdownItem>
-                          </DropdownMenu>
-                        </ButtonDropdown>
+
                       </div>
                     </Col>
                   </Row>
@@ -516,6 +461,9 @@ class Buses extends React.Component {
                     </thead>
                   <tbody>
                     {/*{this.state["table_data"].map(this.renderArray)}*/}
+                    {console.log(this.state.curent_page*this.state.num_to_show)}
+                    {this.state["table_data"].slice((this.state.curent_page-1)*this.state.num_to_show,
+                            this.state.curent_page*this.state.num_to_show).map(this.renderArray)}
                   </tbody>
                 </Table>
                 <CardHeader className="bg-transparent border-0">
