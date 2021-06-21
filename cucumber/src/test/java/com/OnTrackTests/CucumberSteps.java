@@ -1,28 +1,45 @@
-package com.es_ontrack.test.cucumber;
-
+package com.example.cucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.And;
 import java.util.concurrent.TimeUnit;
-import static org.junit.Assert.assertEquals;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-//import com.es_ontrack.test.cucumber.db.UserRepositoryTest;
+import static org.junit.Assert.*;
+import java.sql.*;
 
-public class CucumberIntegSteps extends CucumberIntegTests
-{
-    //@Autowired
-    //UserRepositoryTest u;
+
+public class CucumberSteps extends CucumberIntegrationTest {
 
     @Given("Client needs to connect to MySQL Database")
-    public void CLIENT_NEEDS_TO_CONNECT_TO_MYSQL_DATABASE() throws Throwable {
-    //System.out.println(u.findByEmail("admin"));
+    public void CLIENT_NEEDS_TO_CONNECT_TO_MYSQL_DATABASE() {
+
+
+        String sqlSelectAllPersons = "SELECT * FROM users";
+        String connectionUrl = "jdbc:mysql://192.168.160.18:3306/es23";
+
+        try (Connection conn = DriverManager.getConnection(connectionUrl, "root", "mysql"); 
+                PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons); 
+                ResultSet rs = ps.executeQuery()) {
+                    
+                while (rs.next()) {
+                    int id = rs.getInt("Id");
+                   
+                    System.out.print(id);
+                    // do something with the extracted data...
+                }
+        } catch (SQLException e) {
+            System.out.print(e);
+            fail();
+        }
+
+        System.out.println("User attempting to connect to MySQL DATABASE");
+
     }
 
     @When("Client initializes MySQL Database handler")
     public void INITIALIZE_MYSQL_DATABASE_HANDLER()
-    {   
-       // makeQuery(c);
+    {
+        System.out.println("Database Handler Initialized");
     }
 
     @Then("MySQL Database Connection is established")
@@ -77,11 +94,32 @@ public class CucumberIntegSteps extends CucumberIntegTests
     
     @Given("Client is connected to InfluxDB")
     public void a(){System.out.println("Unimplemented step");}
-    
     @When("Client queries InfluxDB for last hour data")
     public void b(){System.out.println("Unimplemented step");}
-    
     @Then("Client receives all data from what happened until 1 hour prior")
     public void c(){System.out.println("Unimplemented step");}
+    @Given("Client has message to send")
+    public void d(){System.out.println("Unimplemented step");}
+    @When("Client Initializes Kafka Producer and Consumer")
+    public void e(){System.out.println("Unimplemented step");}
+    @And("Kafka Producer sends message to topic")
+    public void f(){System.out.println("Unimplemented step");}
+    @Then("Kafka Consumer receives message from topic")
+    public void g(){System.out.println("Unimplemented step");}
     
+    
+    /*
+    Scenario: Client wants to see what happened in the last hour
+    Given Client is connected to InfluxDB
+    When Client queries InfluxDB for last hour data
+    Then Client receives all data from what happened until 1 hour prior
+
+    Scenario: Client wants to send data to topic
+    Given Client has message to send
+    When Client Initializes Kafka Producer and Consumer
+    And Kafka Producer sends message to topic
+    Then Kafka Consumer receives message from topic
+    */
+
+
 }
