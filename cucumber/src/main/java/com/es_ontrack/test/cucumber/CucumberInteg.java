@@ -1,13 +1,13 @@
-package com.example.cucumber;
+package com.es_ontrack.test.cucumber;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CucumberApplication {
+public class CucumberInteg {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CucumberApplication.class, args);
+		SpringApplication.run(CucumberInteg.class, args);
 	}
 
 }
