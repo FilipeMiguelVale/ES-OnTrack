@@ -27,6 +27,54 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+hr {
+  margin: 40px 0;
+}
+
+.hr1 {
+  border: 0;
+  border-top: 1px solid rgba(228, 196, 15, 0.993);
+}
+
+.hr2 {
+  border: 0;
+  border-top: 1px dashed #CCC;
+}
+
+.hr3 {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, #CCC, transparent);  
+}
+
+.hr4 {
+  border: 0;
+  border-top: 1px dashed #CCC;
+  border-bottom: 2px solid #CCC;
+  height: 3px;
+}
+
+.hr5 {
+  border: 0;
+  border-top: medium double #CCC;
+  height: 1px;
+  overflow: visible;
+  padding: 0;
+  color: #CCC;
+  text-align: center;
+}
+
+.hr5::after {
+  content: url(icons8-bus-50.png);
+  transform: scale(.5);
+  display: inline-block;
+  position: relative;
+  top: -1.5em;
+  font-size: 1em;
+  padding: 0 0.3em;
+  background: white;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -743,6 +791,18 @@ section {
   justify-content: center;
 }
 
+.services .table, th, td{
+  border: 1px solid grey;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+th, td {
+  padding: 10px;
+}
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/

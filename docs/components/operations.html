@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OnTrack</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="../assets/img/icons8-bus-50 (1).png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.1.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="../assets/img/icons8-bus-50 (1).png">
+        <h1 class="text-light"><a href="index.html"><i>OnTrack</i></a></h1>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Início</span></a>
+          </li>
+          <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
+              <span>Documentação</span></a></li>
+          <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+              <span>Milestones</span></a>
+          </li>
+          <li><a href="../index.html#team" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Equipa</span></a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Main Section ======= -->
+  <main id="main">
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <div class="row">
+            <div class="col-md-1 icon-box">
+              <button class="icon">
+                <a href="../index.html#services"><i class="bi bi-arrow-return-left"></i></a>
+              </button>
+            </div>
+            <div class="col">
+              <h2>Operações</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Description ======= -->
+      <div class="container">
+        <p style="text-align: justify;" data-aos="fade-right">
+          No contexto das operações do sistema, o Jenkins foi uma ferramenta fundamental no processo de desenvolvimento,
+          uma vez que permite uma integração constante e permite também fazer o deployment automatizado para
+          um ambiente de produção.
+        </p>
+      </div>
+
+      <!-- ======= Modos de execucao ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 40px;"><b>Modos de execução</b></h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-left">
+          Para um melhor controlo, cada um destes estágios é opcional, isto é, é possível executar o pipeline com apenas
+          alguns ou com todos.
+          Para dar este tipo de liberdade, o pipeline <i>esp23_OnTrack</i> é um pipeline parametrizável, que podem ser
+          escolhidos pelo utilizador no momento do build, para que este execute os passos
+          pretendidos. Os diferentes modos de execução são: <i>Build and Test</i>, <i>Test and Deploy</i>,
+          <i>Deploy</i>, <i>Test</i>,
+          <i>Build</i>, <i>Fast Deploy</i> ou <i>All</i>.
+        </p>
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Modo</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Explicação</b></td>
+          </tr>
+          <tr>
+            <td><b>Build and Test</b></td>
+            <td style="text-align: justify;">
+              Faz build dos mavens e executa todos os testes.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Test and Deploy</b></td>
+            <td style="text-align: justify;">
+              Executa os testes e faz o deploy das imagens nas máquinas.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Deploy</b></td>
+            <td style="text-align: justify;">
+              Cria as imagens e dá deploy.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Test</b></td>
+            <td style="text-align: justify;">
+              Executa apenas as etapas relacionadas ao teste do pipeline.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build</b></td>
+            <td style="text-align: justify;">
+              Apenas faz build dos mavens.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Fast Deploy</b></td>
+            <td style="text-align: justify;">
+              Faz deploy das imagens para as VMs, sem criar imagens.
+            </td>
+          </tr>
+          <tr>
+            <td><b>All</b></td>
+            <td style="text-align: justify;">
+              Executa o pipeline completo.
+            </td>
+          </tr>
+        </table>
+        <p style="padding-top: 20px"></p>
+      </div>
+
+      <hr class="hr5">
+
+      <!-- ======= Pipeline Stages ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Detalhes de cada stage</b>
+          </h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Cada estágio do pipeline desenvolvido utiliza diferentes comandos, associados à função definida pelo nome do
+          estágio, mas tendo em conta a tecnologia usada, como será explicado de seguida.
+        </p>
+
+        <table class="center" data-aos="fade-right">
+          <tr>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Stage</b></td>
+            <td style="background-color:rgba(255, 217, 0, 0.856)"><b>Especificações</b></td>
+          </tr>
+          <tr>
+            <td><b>Declarative: Checkout SCM</b></td>
+            <td style="text-align: justify;">
+              Estágio gerado automaticamente pelo Jenkins, onde faz pool ao repositório.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Declarative: Tool install</b></td>
+            <td style="text-align: justify;">
+              Estágio gerado automaticamente pelo Jenkins, onde se verifica se houve alterações no repositório ou no
+              jenkinsfile.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Setup parameters</b></td>
+            <td style="text-align: justify;">
+              Processa o que é suposto executar, dependendo dos parâmetros escolhidos da tabela acima.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Cloning repository</b></td>
+            <td style="text-align: justify;">
+              Clona o repositório.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build Backend</b></td>
+            <td style="text-align: justify;">
+              Faz build do maven respetivo ao backend.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build Producer</b></td>
+            <td style="text-align: justify;">
+              Faz build do maven respetivo ao producer.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build Selenium</b></td>
+            <td style="text-align: justify;">
+              Faz build do maven respetivo ao react.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Testing Backend</b></td>
+            <td style="text-align: justify;">
+              Testa o backend.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Testing React</b></td>
+            <td style="text-align: justify;">
+              Testa o react.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build Backend Image</b></td>
+            <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao backend.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build React Image</b></td>
+            <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao front-end.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Build Producer Image</b></td>
+            <td style="text-align: justify;">
+              Faz build das imagens que vão para a VM do docker respetivo ao producer.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Publish images</b></td>
+            <td style="text-align: justify;">
+              Publica as imagens na VM de registro.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Deploy React</b></td>
+            <td style="text-align: justify;">
+              Faz deploy do react.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Deploy Backend</b></td>
+            <td style="text-align: justify;">
+              Faz deploy do backend.
+            </td>
+          </tr>
+          <tr>
+            <td><b>Deploy Producer</b></td>
+            <td style="text-align: justify;">
+              Faz deploy do producer.
+            </td>
+          </tr>
+        </table>
+        <p style="padding-top: 20px"></p>
+      </div>
+
+      <hr class="hr5">
+
+      <!-- ======= Requisitos ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Requisitos</b>
+          </h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          A nível de requisitos para o deploy do sistema o que é necessário é uma máquina com a plataforma docker
+          instalada, com um container a correr Kafka producer (porta 9092), um container a correr Backend (porta 2181) e
+          outro container a correr React (porta 3001). Assume-se ainda que nesta máquina o sistema de ELK com logstash
+          está configurado através de um docker compose para ser possível fazer a configuração da monitorização.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Para fazer o deploy apenas é necessário fazer pull das imagens do docker registry, criar os containers
+          necessários para essas imagens e dar start aos mesmos, que no fundo, foi o que foi explicado na execução do
+          Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e a porta do kafka para que o
+          logback appender envie a informação recolhida para um tópico lido pelo logstash. Por sua vez, nos diferentes
+          serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search, onde
+          podem depois ser analisados no kibana.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-left">
+          Neste sistema foi utilizado kubernetes e docker-compose, existindo então uma configuração out-of-the-box para
+          o utilizador final, para além de se poder utilizar o jenkins.
+        </p>
+        <p style="padding-top: 20px"></p>
+      </div>
+
+      <hr class="hr5">
+
+      <!-- ======= Motitorizacao ======= -->
+      <div class="container">
+        <div class="section-title">
+          <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px;"><b>Monitorização</b>
+          </h3>
+        </div>
+        <p style="text-align: justify;" data-aos="fade-right">
+          A monitorização é feita usando uma stack ELK (Elasticsearch Logstash Kibana).
+        </p>
+        <p style="text-align: justify;" data-aos="fade-left">
+          Para fazer upload de nossos dados para o Elastic Search, utilizou-se um appender para logback. Este
+          appender é configurado no <i>logback.xml</i>, disponível no código-fonte.
+        </p>
+        <p style="text-align: justify;" data-aos="fade-right">
+          Esses dados podem então ser visualizados no Kibana, consultando o índice <i></i>“esp30”</i>. Como todas as
+          mensagens de log são carregadas lá, esses dados podem ser filtrados para mostrar todos os tipos de
+          informações sobre o sistema em execução.
+        </p>
+        <p style="padding-top: 20px"></p>
+      </div>
+
+    </section>
+  </main>
+  <!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
