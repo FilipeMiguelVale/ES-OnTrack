@@ -52,8 +52,6 @@
           </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
-          <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
-              <span>Demo</span></a></li>
           <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
               <span>Milestones</span></a>
           </li>
@@ -185,7 +183,8 @@
           <tr>
             <td><b>Declarative: Tool install</b></td>
             <td style="text-align: justify;">
-              Estágio gerado automaticamente pelo Jenkins, onde se verifica se houve alterações no repositório ou no jenkinsfile.
+              Estágio gerado automaticamente pelo Jenkins, onde se verifica se houve alterações no repositório ou no
+              jenkinsfile.
             </td>
           </tr>
           <tr>
@@ -257,19 +256,19 @@
           <tr>
             <td><b>Deploy React</b></td>
             <td style="text-align: justify;">
-
+              Faz deploy do react.
             </td>
           </tr>
           <tr>
             <td><b>Deploy Backend</b></td>
             <td style="text-align: justify;">
-
+              Faz deploy do backend.
             </td>
           </tr>
           <tr>
             <td><b>Deploy Producer</b></td>
             <td style="text-align: justify;">
-              
+              Faz deploy do producer.
             </td>
           </tr>
         </table>
@@ -287,23 +286,20 @@
         <p style="text-align: justify;" data-aos="fade-right">
           A nível de requisitos para o deploy do sistema o que é necessário é uma máquina com a plataforma docker
           instalada, com um container a correr Kafka producer (porta 9092), um container a correr Backend (porta 2181) e
-          outro container a correr React (porta 3001).
-          Assume-se ainda que nesta máquina o sistema de ELK com logstash está configurado através de um docker
-          compose para ser possível fazer
-          a configuração da monitorização.
+          outro container a correr React (porta 3001). Assume-se ainda que nesta máquina o sistema de ELK com logstash
+          está configurado através de um docker compose para ser possível fazer a configuração da monitorização.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
           Para fazer o deploy apenas é necessário fazer pull das imagens do docker registry, criar os containers
           necessários para essas imagens e dar start aos mesmos, que no fundo, foi o que foi explicado na execução do
-          Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e porta do kafka para que o
+          Jenkinsfile. Para ter uma monitorização do mesmo, é necessário alterar o IP e a porta do kafka para que o
           logback appender envie a informação recolhida para um tópico lido pelo logstash. Por sua vez, nos diferentes
-          serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search,
-          onde podem depois ser analisados no kibana.
+          serviços é preciso especificar no código qual é esta porta e os dados são adicionados ao Elastic Search, onde
+          podem depois ser analisados no kibana.
         </p>
         <p style="text-align: justify;" data-aos="fade-left">
-          Neste sistema foi utilizado <font color="#ff0000">kubernetes e</font> docker-compose, existindo então uma
-          configuração out-of-the-box
-          para o utilizador final, para além de se poder utilizar o jenkins.
+          Neste sistema foi utilizado kubernetes e docker-compose, existindo então uma configuração out-of-the-box para
+          o utilizador final, para além de se poder utilizar o jenkins.
         </p>
         <p style="padding-top: 20px"></p>
       </div>
@@ -317,16 +313,16 @@
           </h3>
         </div>
         <p style="text-align: justify;" data-aos="fade-right">
-            A monitorização é feita usando uma stack ELK (Elasticsearch Logstash Kibana).
+          A monitorização é feita usando uma stack ELK (Elasticsearch Logstash Kibana).
         </p>
         <p style="text-align: justify;" data-aos="fade-left">
-            Para fazer upload de nossos dados para o Elastic Search, utilizou-se um appender para logback. Este
-            appender é configurado no <i>logback.xml</i>, disponível no código-fonte.
+          Para fazer upload de nossos dados para o Elastic Search, utilizou-se um appender para logback. Este
+          appender é configurado no <i>logback.xml</i>, disponível no código-fonte.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
-            Esses dados podem então ser visualizados no Kibana, consultando o índice <i></i>“esp30”</i>. Como todas as
-            mensagens de log são carregadas lá, esses dados podem ser filtrados para mostrar todos os tipos de
-            informações sobre o sistema em execução.
+          Esses dados podem então ser visualizados no Kibana, consultando o índice <i></i>“esp30”</i>. Como todas as
+          mensagens de log são carregadas lá, esses dados podem ser filtrados para mostrar todos os tipos de
+          informações sobre o sistema em execução.
         </p>
         <p style="padding-top: 20px"></p>
       </div>

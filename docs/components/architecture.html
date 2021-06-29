@@ -52,8 +52,6 @@
           </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
-          <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
-              <span>Demo</span></a></li>
           <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
               <span>Milestones</span></a>
           </li>
@@ -87,47 +85,41 @@
             <h3 style="font-family: Lucida Handwriting; color: #173b6c;"><b>Arquitetura do sistema</b></h3>
           </div>
           <p style="text-align: justify;" data-aos="fade-right">
-            Após o processo de levantamento de requisitos e da escolha de uma arquitetura adequada aos
-            mesmos, foi preciso escolher quais as ferramentas que melhor se adequam ao desenvolvimento do sistema.
-            Assim,
-            a nível de back-end implementou-se o sistema com recurso à plataforma Spring Boot, uma vez que permite criar
-            a
-            base do projeto de forma rápida e eficiente. Relativamente ao front-end, dado que um dos requisitos
-            dos sistema passa por uma rápida atualização das componentes visuais do website, optou-se pelo ReactJS, pois
-            permite atualizar componentes individualmente, de forma rápida, eficiente, sem serem necessários muitos
-            recursos.
+            Após o processo de levantamento de requisitos e da escolha de uma arquitetura adequada aos mesmos, foi
+            preciso escolher quais as ferramentas que melhor se adequam ao desenvolvimento do sistema. Assim, a nível de
+            back-end implementou-se o sistema com recurso à plataforma Spring Boot, uma vez que permite criar a base do
+            projeto de forma rápida e eficiente. Relativamente ao front-end, dado que um dos requisitos dos sistema
+            passa por uma rápida atualização das componentes visuais do website, optou-se pelo ReactJS, pois permite
+            atualizar componentes individualmente, de forma rápida e eficiente, sem serem necessários muitos recursos.
           </p>
           <p style="text-align: justify;" data-aos="fade-left">
-            Como referido anteriormente, o sistema foi desenvolvido através do uso da plataforma Spring Boot. No
-            entanto,
-            também foram usadas diversas outras ferramentas, como o Docker, Docker Registry e Jenkins, que auxiliam o
-            processo de automatização e atualização do sistema e a plataforma Kafka, que permite que os diversos
-            componentes do sistema comuniquem entre si de forma rápida.
-            Para além das ferramentas acima enumeradas, existem ainda aquelas cujo uso, apesar de não estar relacionado
-            com o runtime, são também de extrema importância. Destacam-se assim, por exemplo, o Logback, Logstash,
-            Elasticsearch e Kibana, uma vez que o seu uso permite uma melhor gestão dos logs, facilitando o processo de
+            O sistema foi desenvolvido através do uso da plataforma Spring Boot. No entanto, também foram usadas
+            diversas outras ferramentas, como o Docker, Docker Registry e Jenkins, que auxiliam o processo de
+            automatização e atualização do sistema e a plataforma Kafka, que permite que os diversos componentes do
+            sistema comuniquem entre si de forma rápida. Ainda foram utilizadas outras ferramentas, como o ELK Stack
+            (Elasticsearch, Logstash, Kibana) que permite uma melhor gestão dos logs, facilitando o processo de
             verificação e validação do estado do sistema.
-            De seguida apresentam-se as portas que se encontram associadas a algumas das ferramentas anteriormente
-            enumeradas, bem como as portas associadas a alguns dos microsserviços que compõem o sistema.
           </p>
-          <p style="text-align: justify;" data-aos="fade-left">
+          <p style="text-align: justify;" data-aos="fade-right">
             Para além das ferramentas acima enumeradas, existem ainda aquelas cujo uso, apesar de não estar relacionado
             com o <i>runtime</i>, são importantes, como por exemplo o Logback, Logstash,
             Elasticsearch e Kibana, uma vez que o seu uso permite uma melhor gestão dos logs, facilitando o processo de
             verificação e validação do estado do sistema.
           </p>
           <p style="text-align: justify;" data-aos="fade-left">
-            O sistema desenvolvido tem a si associado um sistema subdividido em microsserviços, o que vai ao encontro
-            do modelo <i>Event Driven</i>. Relativamente às tecnologias usadas, todos os microsserviços têm por base a
-            plataforma Springboot, o que facilita a conjugação de todos os componentes de cada um dos sistemas.
-          </p>
+            O sistema desenvolvido tem a si associado um sistema subdividido em microsserviços que vai ao encontro do
+            modelo Event Driven. Relativamente às tecnologias usadas, todos os microsserviços têm por base a plataforma
+            Springboot, o que facilita a conjugação de todos os componentes de cada um dos sistemas. </p>
           <p style="text-align: justify;" data-aos="fade-right">
-            Os dados originais serão extraídos do documento “Bus Information” facultado pelo professor e
-            disponibilizados para o nosso sistema através de uma API REST após um processamento prévio. A informação é
-            persistida numa base de dados InfluxDB, com a informação considerada mais relevante. Em termos de
-            processamento da informação, este será realizado com recurso ao kafka, o qual está regularmente a
-            produzir/consumir informação de campos como a velocidade ou as coordenadas, para calcular as rotas dos
-            autocarros e o tempo estimado de chegada. </p>
+            Os dados originais serão extraídos de um dataset “Bus Information” facultado pelo professor e
+            disponibilizados para o nosso sistema através de uma API REST, após um processamento prévio. A informação é
+            persistida numa base de dados InfluxDB, de modo a ser processada com base no tempo. </p>
+          <p style="text-align: justify;" data-aos="fade-left">
+            O dataset é processado por uma aplicação em Java e enviado para um Kafka broker que armazena os dados num
+            tópico. Os dados são posteriormente consumidos pelo sistema Spring Boot e apresentados no frontend ou
+            armazenados na base de dados InfluxDB.
+          </p>
+
           <img src="../assets/img/Arquitetura-Arquitetura.png" alt="Trulli" class="center">
           <p style="padding-top: 20px"></p>
         </div>
@@ -145,24 +137,21 @@
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Database MySQL</b></h5>
           <p style="text-align: justify;" data-aos="fade-left">
-            A base de dados MySQL é usada para armazenar a informação sobre os utilizadores. Esta base de dados está
-            ligada à aplicação front-end para permitir fazer o registo, login de utilizadores, entre outras
-            funcionalidades relativas aos utilizadores.
+            A base de dados MySQL é usada para armazenar informação de utilizadores. Esta base de dados está ligada à
+            aplicação front-end para permitir fazer o registo e login de utilizadores, entre outras funcionalidades.
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Database InfluxDB</b></h5>
           <p style="text-align: justify;" data-aos="fade-right">
             A base de dados InflluxBD é usada para armazenar a informação sobre os autocarros. Esta base de dados está
-            ligada à aplicação back-end para permitir utilizar a informação dos autocarros, por exemplo, para
-            estatísticas.
+            ligada à aplicação back-end para permitir utilizar a informação estatística dos autocarros.
           </p>
           <h5 style="font-family: Lucida Handwriting; color: #173b6c; padding-top: 20px"><b>Front-end</b></h5>
           <p style="text-align: justify;" data-aos="fade-left">
-            <font color="#ff0000">O front-end é uma aplicação React, responsável por apresentar a informação dos
-              autocarros, recebida e
-              processada, para uso por parte dos utilizadores, tendo uma interação back-end &lt-&gt Utilizador.
-              Esta aplicação apresenta uma secção para a visualização dos autocarros em tempo real, outra secção para
-              selecionar um autocarro e ver toda a informação relativa ao mesmo, outra secção para ver o histórico dos
-              autocarros e uma secção para informação relativa aos utilizadores.</font>
+            O front-end é uma aplicação ReactJS, responsável por apresentar a informação dos
+            autocarros, recebida e processada, para uso por parte dos utilizadores, tendo uma interação Cliente <->
+              Servidor. Esta aplicação apresenta uma secção para a visualização dos autocarros em tempo real, outra
+              secção para selecionar um autocarro e ver toda a informação relativa ao mesmo e outra secção relativa
+              aos utilizadores.
           </p>
         </div>
 
@@ -170,7 +159,8 @@
 
         <div class="container">
           <div class="section-title">
-            <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-bottom: 20px;"><b>Modelo Tecnológico</b></h3>
+            <h3 style="font-family: Lucida Handwriting; color: #173b6c; padding-bottom: 20px;"><b>Modelo Tecnológico</b>
+            </h3>
           </div>
           <img src="../assets/img/modeloTec.png" alt="Trulli" class="center">
         </div>

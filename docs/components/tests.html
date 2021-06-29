@@ -52,8 +52,6 @@
           </li>
           <li><a href="../index.html#services" class="nav-link scrollto active"><i class="bx bx-file-blank"></i>
               <span>Documentação</span></a></li>
-          <li><a href="../index.html#video" class="nav-link scrollto"><i class="bx bx-video"></i>
-              <span>Demo</span></a></li>
           <li><a href="../index.html#milestones" class="nav-link scrollto"><i class="bx bx-calendar"></i>
               <span>Milestones</span></a>
           </li>
@@ -87,23 +85,20 @@
       <!-- ======= Testes Section ======= -->
       <div class="container">
         <p style="text-align: justify;" data-aos="fade-right">
-          De forma a testar o funcionamento dos módulos que constituem o sistema foram realizados
-          testes de integração, que têm como principal objectivo testar a aplicação desenvolvida, para verificar se
-          enviava, ou não, os resultados pretendidos em diferentes cenários.
-          Com o objetivo de testar as diversas chamadas à API foram escritos diversos cenários com recurso à ferramenta
-          Cucumber.
+          De forma a testar o funcionamento dos módulos que constituem o sistema foram realizados testes de integração,
+          que têm como principal objectivo testar a aplicação desenvolvida, para verificar se enviava, ou não, os
+          resultados pretendidos em diferentes cenários. Com o objetivo de testar as diversas chamadas à API foram
+          escritos diversos cenários com recurso à ferramenta Cucumber.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
           Todos os testes têm o mesmo pressuposto associado, pelo que, acabam por ser semelhantes, ou seja, em todos
-          eles após uma chamada à API é verificado o valor de retorno, comparando posteriormente com a
-          informação que deveria ser retornada caso os dados viessem diretamente dos repositórios. No entanto, o
-          comportamento por detrás destes é simulado através do uso de MockBeans, pois o
-          objetivo não era testar os repositórios.
+          eles após uma chamada à API é verificado o valor de retorno, comparando posteriormente com a informação que
+          deveria ser retornada caso os dados viessem diretamente dos repositórios. No entanto, o comportamento por
+          detrás destes é simulado através do uso de MockBeans, pois o objetivo não era testar os repositórios.
         </p>
         <p style="text-align: justify;" data-aos="fade-right">
-          Resumidamente, cada teste em si é bastante direto: após fazer o pedido à API
-          o resultado é comparado com os dados inseridos anteriormente, através do uso do Mock.
-        </p>
+          Resumidamente, cada teste em si é bastante direto: após fazer o pedido à API o resultado é comparado com os
+          dados inseridos anteriormente, através do uso do Mock. </p>
         <p style="text-align: justify;" data-aos="fade-right">
           Atualmente os testes desenvolvidos fazem parte da pipeline apresentado, isto é, os
           testes podem ser executados a qualquer altura, com o intuito de verificar se os mesmos continuam a não
